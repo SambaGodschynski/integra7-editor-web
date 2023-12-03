@@ -8,27 +8,13 @@ window.native$ = function (func) { /* for Windows ie */
 	eval(func);
 };
 
-window.native = function () {
+window.native = function (obj, func, ...args) {
 
-	var obj  = arguments[0];
-	var func = arguments[1];
-	var argc = arguments.length;
-
-	if (argc > 5)
-		console.log(`window[${obj}][${func}](${arguments[2]}, ${arguments[3]}, ${arguments[4]}, ${arguments[5]})`)
-		//return window[obj][func](arguments[2], arguments[3], arguments[4], arguments[5]);
-	if (argc > 4)
-		console.log(`window[${obj}][${func}](${arguments[2]}, ${arguments[3]}, ${arguments[4]})`)
-		//return window[obj][func](arguments[2], arguments[3], arguments[4]);
-	if (argc > 3)
-		console.log(`window[${obj}][${func}](${arguments[2]}, ${arguments[3]})`)
-		//return window[obj][func](arguments[2], arguments[3]);
-	if (argc > 2)
-		console.log(`window[${obj}][${func}](${arguments[2]})`)
-		//return window[obj][func](arguments[2]);
-
-	console.log(`window[${obj}][${func}]`)
-	//return window[obj][func]();
+	console.log(`window[${obj}][${func}](${args.join(', ')})`);
+	if (!window[obj] || !window[obj][func]) {
+		return `{}`;
+	}
+	return JSON.stringify(window[obj][func](...args) ?? {});
 };
 
 /* NSURLProtocol for Mac/iOS */
