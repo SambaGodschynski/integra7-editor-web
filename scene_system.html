@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- widget -->
+    <script src="js/view/widget/widget_slider.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_system_controller.js"></script>
+
+<!-- view -->
+    <script src="js/view/scene_system.js"></script>
+
+
+<style>
+    #box {
+        width: 90%;
+        height: 100px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+    #box1 {
+        width: 40%;
+        height: 50%;
+        float: left;
+    }
+    #box2 {
+        width: 60%;
+        height:50%;
+        float: left;
+    }
+    table {
+        width: 60%;
+        margin-left: 50px;
+    }
+
+</style>
+</head>
+<body>
+
+<a name="sound">
+<h2>SOUND</h2>
+</a>
+    <table>
+        <tr><td>Master Level</td><td><div id="PRM-_SYS-_SC-NESC_LEVEL"></div></td></tr>
+        <tr><td>Master Tune</td><td><div id="PRM-_SYS-_SC-NESC_TUNE"></div></td></tr>
+        <tr><td>Master Key Shift</td><td><div id="PRM-_SYS-_SC-NESC_KEY_SHIFT"></div></td></tr>
+    </table>
+
+<a name="syncTempo">
+<h2>SYNC/TEMPO</h2>
+</a>
+    <table>
+        <tr><td>Clock Source</td><td><select id="PRM-_SYS-_SC-NESC_CLK_SRC"></select></tr>
+        <tr><td>System Tempo</td><td><div id="PRM-_SYS-_SC-NESC_TEMPO"></div></td></tr>
+        <tr><td>Tempo Assign Source</td><td><select id="PRM-_SYS-_SC-NESC_OR_TEMPO"></select></td></tr>
+    </table>
+
+<a name="midi">
+<h2>MIDI</h2>
+</a>
+    <table width="40%" class="parameter">
+        <tr><td>Studio Set Control Channel</td><td><select id="PRM-_SYS-_SC-NESC_PRF_CTRL_CH"></select></td></tr>
+        <tr><td>Rx Program Change</td><td><input type="checkbox" id="PRM-_SYS-_SC-NESC_RX_PC" /></td></tr>
+        <tr><td>Rx Bank Select</td><td><input type="checkbox" id="PRM-_SYS-_SC-NESC_RX_BS" /></td></tr>
+    </table>
+
+<a name="motionalSurround">
+<h2>MOTIONAL SURROUND</h2>
+</a>
+    <table>
+        <tr><td>2CH Out Mode</td><td><select id="PRM-_SYS-_SC-NESC_RSS_OUTMODE"></select></td></tr>
+        <tr><td>5.1CH Center SP Switch</td><td><input type="checkbox" id="PRM-_SYS-_SC-NESC_RSS_CENTERSP_SW" /></td></tr>
+        <tr><td>5.1CH Sub Woofer(LFE) Switch</td><td><input type="checkbox" id="PRM-_SYS-_SC-NESC_RSS_WOOFER_SW" /></td></tr>
+    </table>
+
+<a name="control">
+<h2>CONTROL</h2>
+</a>
+    <table>
+        <tr><td>System Control Src1</td><td><select id ="PRM-_SYS-_SC-NESC_CTRL1_SRC"></select></td></tr>
+        <tr><td>System Control Src2</td><td><select id ="PRM-_SYS-_SC-NESC_CTRL2_SRC"></select></td></tr>
+        <tr><td>System Control Src3</td><td><select id ="PRM-_SYS-_SC-NESC_CTRL3_SRC"></select></td></tr>
+        <tr><td>System Control Src4</td><td><select id ="PRM-_SYS-_SC-NESC_CTRL4_SRC"></select></td></tr>
+        <tr><td>Control Source Select</td><td><select id="PRM-_SYS-_SC-NESC_CTRL_SRC"></select></td></tr>
+    </table><br>
+</body>
+</html>

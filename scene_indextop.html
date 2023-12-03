@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/head.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+	<script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="js/lib/json2.js"></script>
+
+<!-- controller -->
+	<script src="js/view/ui_midi_def.js"></script>
+    <script src="js/view/scene_indextop_controller.js"></script>
+
+<!-- view -->
+     <script src="js/view/scene_indextop.js"></script>
+
+<style>
+
+</style>
+</head>
+<body>
+
+<div id="tabArea" onMouseDown="return false;">
+    <img id="Rolandlogo" src="./img/Roland.png" alt="logo1">
+    <img id="Integralogo" src="./img/INTEGRA-7_gold.png" alt="logo2" >
+    <div id="tabset">
+        <input type="radio" name="menu" id="radio1" title="studioset" checked><label for="radio1">STUDIO SET</label>
+        <input type="radio" name="menu" id="radio2" title="tone_sna"><label for="radio2">TONE</label>
+        <input type="radio" name="menu" id="radio3" title="motionalsurround"><label for="radio3">MOTIONAL  SURROUND</label>
+        <input type="radio" name="menu" id="radio4" title="effects"><label for="radio4">EFFECTS</label>
+        <input type="radio" name="menu" id="radio7" title="system"><label for="radio7">SYSTEM</label>
+        <input type="radio" name="menu" id="radio8" title="exp"><label for="radio8">EXPANSION</label>
+    </div>
+
+    <div id="tabset2">
+        <input type="checkbox" id="preview"><label for="preview" style="margin-right:10px">PREVIEW</label>
+        <input type="radio" name="menu" id="radio9" title="utility"><label for="radio9" style="margin-right:10px">UTILITY</label>
+        <input type="checkbox" id="read" title="read"><label for="read">READ</label>
+
+    </div>
+</div>
+
+<div id="selectBox">
+    <div id="studioSetBox">
+        <span class="title">STUDIO SET</span><br>
+        <select id="studioSetSelect"></select>
+        <input type="text" id="currentStudioSet" maxlength="16" readonly="readonly"/>
+    </div>
+    <div id="toneTypeBox">
+        <span class="title">TYPE</span><br>
+        <select id="type">
+            <option value=0>SN-A</option>
+            <option value=1>SN-S</option>
+            <option value=2>SN-D</option>
+            <option value=3>PCM-S</option>
+            <option value=4>PCM-D</option>
+        </select>
+    </div>
+    <div id="toneBankBox">
+        <span class="title">BANK</span><br>
+        <select id="bank">
+            <option value=0>PRESET</option>
+            <option value=1>USER</option>
+            <option value=2>GM2</option>
+        </select>
+    </div>
+    <div id="toneCategoryBox">
+        <span class="title">CATEGORY</span><br>
+        <select id="category">type</select>
+    </div>
+    <div id="toneNoBox">
+        <span class="title">TONE</span><br>
+        <select id="toneNoSelect"></select>
+        <input type="text" id="currentToneName" maxlength="12" readonly="readonly"/>
+    </div>
+</div>
+<div id="partBox" id="tabArea" onSelectStart="return false">
+    <span class="title">PART</span><br>
+    <div id="partset">
+        <input type="radio" name="partNum" id="part1" checked><label for="part1">1</label>
+        <input type="radio" name="partNum" id="part2" ><label for="part2">2</label>
+        <input type="radio" name="partNum" id="part3" ><label for="part3">3</label>
+        <input type="radio" name="partNum" id="part4" ><label for="part4">4</label>
+        <input type="radio" name="partNum" id="part5" ><label for="part5">5</label>
+        <input type="radio" name="partNum" id="part6" ><label for="part6">6</label>
+        <input type="radio" name="partNum" id="part7" ><label for="part7">7</label>
+        <input type="radio" name="partNum" id="part8" ><label for="part8">8</label>
+        <input type="radio" name="partNum" id="part9" ><label for="part9">9</label>
+        <input type="radio" name="partNum" id="part10" ><label for="part10">10</label>
+        <input type="radio" name="partNum" id="part11" ><label for="part11">11</label>
+        <input type="radio" name="partNum" id="part12" ><label for="part12">12</label>
+        <input type="radio" name="partNum" id="part13" ><label for="part13">13</label>
+        <input type="radio" name="partNum" id="part14" ><label for="part14">14</label>
+        <input type="radio" name="partNum" id="part15" ><label for="part15">15</label>
+        <input type="radio" name="partNum" id="part16" ><label for="part16">16</label>
+        &nbsp;&nbsp;
+        <input type="radio" name="partNum" id="ex" ><label for="ex" id="label_ex">EX</label>
+    </div>
+</div>
+
+</body>
+</html>

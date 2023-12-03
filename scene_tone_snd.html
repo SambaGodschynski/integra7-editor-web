@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- widget -->
+    <script src="js/view/widget/widget_slider.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_tone_snd_controller.js"></script>
+
+<!-- view -->
+    <script src="js/view/scene_tone_snd.js"></script>
+
+	<style>
+    table {
+        margin-left: 50px;
+        width: 60%;
+    }
+    table h3 {
+        margin: 10px 0 10px 0;
+    }
+    table#cmpEqTable {
+        margin-right: 15px;
+        width: 90%;
+    }
+    table#cmpEqTable tr.button {
+        text-align: center;
+    }
+
+</style>
+
+</head>
+<body>
+
+
+<a name="common">
+<h2>COMMON</h2>
+</a>
+<table class="toneSndTable">
+    <tr class="selector"><td>Phrase Number</td><td class="PRM-_FPART1-_KIT-_KC-SDKC_PHRASE"></td></tr>
+    <tr class="slider"><td>Drum Kit Level</td><td class="PRM-_FPART1-_KIT-_KC-SDKC_LEVEL"></td></tr>
+    <tr class="slider"><td>AmbienceLevel</td><td class="PRM-_FPART1-_KIT-_KC-SDKC_AMBIENCE_LEVEL"></td></tr>
+</table>
+
+<a name="drumInst">
+<h2>DRUM INST</h2>
+</a>
+
+<table>
+    <tr><td>Inst Bank</td><td><select id="instBank"></select></td></tr>
+    <tr><td>Inst Number</td><td><select id="instNumber"></select></td></tr>
+</table>
+<table id="inst">
+<!--     <tr class="slider"><td>Inst Number</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_INST_NUM"></td></tr> -->
+    <tr class="slider"><td>Level</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_INST_LEVEL"></td></tr>
+    <tr class="slider"><td>Pan</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_INST_PAN"></td></tr>
+    <tr class="slider"><td>Chorus Send Level</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_INST_CHO_SEND"></td></tr>
+    <tr class="slider"><td>Reverb Send Level</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_INST_REV_SEND"></td></tr>
+    <tr class="slider"><td>Tune</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_PIT_FINE"></td></tr>
+    <tr class="slider"><td>Attack</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_ATTACK"></td></tr>
+    <tr class="slider"><td>Decay</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_DECAY"></td></tr>
+    <tr class="slider"><td>Brilliance</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_BRIGHTNESS"></td></tr>
+    <tr class="selector"><td>Variation</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_FLAM_CTRL"></td></tr>
+    <tr class="slider"><td>Dynamic Range</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_DYN_RANG"></td></tr>
+    <tr class="slider"><td>Stereo Width</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_STEREO_WIDTH"></td></tr>
+    <tr class="selector"><td>Output Assign</td><td class="PRM-_FPART1-_KIT-_KN_partial_-SDKN_OUTPUT_ASSIGN"></td></tr>
+</table>
+<br>
+
+<a name="compEq"><h2>COMP+EQ</h2></a>
+<table class="toneSndTable">
+    <tr class="selector"><td>Drum Comp+EQ Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ_PART"></td></tr>
+    <tr class="button"><td>Comp+EQ Switch</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ_SW"></td></tr>
+</table><br>
+
+<table id="cmpEqTable">
+        <!-- <tr bgcolor="#efefef"><tr bgcolor="#3d3d3d"> --><tr bgcolor="#262626"><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+    <tbody id="cmpEqBody">
+        <tr class="button"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_COMP_num__SW"><h3>COMP</h3></td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_COMP_num__ATTACK">Attack Time</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_COMP_num__RELEASE">Release Time</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_COMP_num__THRESHOLD">Threshold</td></tr>
+        <tr class="selector"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_COMP_num__RATIO">Ratio</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_COMP_num__POSTGAIN">Output Gain</td></tr>
+        <!-- <tr bgcolor="#efefef"><tr bgcolor="#3d3d3d"> --><tr bgcolor="#262626"><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+        <tr class="button" style="border-top: 1px solid #bbbbbb;"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_EQ_num__SW"><h3>EQ</h3></td></tr>
+        <tr class="selector"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_EQ_num__LOWFREQ">Low Freq</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_EQ_num__LOWGAIN">Low Gain</td></tr>
+        <tr class="selector"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_EQ_num__MIDFREQ">Mid Freq</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_EQ_num__MIDGAIN">Mid Gain</td></tr>
+        <tr class="selector"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_EQ_num__MIDQ">Mid Q</td></tr>
+        <tr class="selector"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_EQ_num__HIGHFREQ">Hight Freq</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_KIT-_KCQ-SDKCQ_EQ_num__HIGHGAIN">Hight Gain</td></tr>
+    </tbody>
+</table>
+
+<a name="compEqOut"><h2>COMP+EQ OUTPUT</h2>
+</a>
+<div id="cmpEqOut">
+    <table class="toneSndTable">
+        <tr class="selector"><td>Comp+Eq 1 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ1_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+Eq 2 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ2_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+Eq 3 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ3_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+Eq 4 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ4_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+Eq 5 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ5_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+Eq 6 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ6_ASSIGN"></td></tr>
+    </table>
+</div>
+
+
+<br>
+
+</body>
+</html>

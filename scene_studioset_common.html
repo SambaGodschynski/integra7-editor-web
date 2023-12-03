@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- widget -->
+    <script src="js/view/widget/widget_slider.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_studioset_common_controller.js"></script>
+
+<!-- view -->
+    <script src="js/view/scene_studioset_common.js"></script>
+
+<style>
+    #box {
+        width: 90%;
+        height: 100px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+    #box1 {
+        width: 40%;
+        height: 50%;
+        float: left;
+    }
+    #box2 {
+        width: 60%;
+        height:50%;
+        float: left;
+    }
+    table {
+        margin-left: 50px;
+        width: 60%;
+    }
+    table#phaseLock {
+        width: 60%;
+        border: none;
+    }
+    table#phaseLock th{
+        vertical-align:bottom;
+        border: none;
+    }
+    table#phaseLock td{
+        border: none;
+    }
+    label#allChLabel {
+        margin: 10px 50px;
+        width: 70px;
+    }
+
+</style>
+</head>
+<body>
+
+<h1>STUDIO SET COMMON</h1>
+<a name="general">
+<h2>GENERAL</h2>
+</a>
+    <table class="parameter">
+        <tr><td>Studio Set Tempo</td><td><div id="PRM-_PRF-_FC-NEFC_OR_TEMPO"></div></td></tr>
+        <tr><td>Drum Comp+EQ Assign</td><td><select id="PRM-_PRF-_FC-NEFC_COMPEQ_PART"></select></td></tr>
+    </table>
+
+<a name="control">
+<h2>CONTROL</h2>
+</a>
+    <table class="parameter">
+        <tr><td>Tone Control Src1</td><td><select id="PRM-_PRF-_FC-NEFC_CTRL1_SRC"></select></td></tr>
+        <tr><td>Tone Control Src2</td><td><select id="PRM-_PRF-_FC-NEFC_CTRL2_SRC"></select></td></tr>
+        <tr><td>Tone Control Src3</td><td><select id="PRM-_PRF-_FC-NEFC_CTRL3_SRC"></select></td></tr>
+        <tr><td>Tone Control Src4</td><td><select id="PRM-_PRF-_FC-NEFC_CTRL4_SRC"></select></td></tr>
+    </table>
+
+<a name="paseLock">
+<h2>PHASE LOCK</h2>
+<input type="checkbox" id="allCh" /><label id="allChLabel" for="allCh" onSelectStart="return false">ALL CH</label>
+</a>
+    <table id="phaseLock">
+        <tr><th height="30">Ch1</th><th>Ch2</th><th>Ch3</th><th>Ch4</th><th>Ch5</th><th>Ch6</th><th>Ch7</th><th>Ch8</th></tr>
+        <tr align="center" height="30px"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><th height="30">Ch9</th><th>Ch10</th><th>Ch11</th><th>Ch12</th><th>Ch13</th><th>Ch14</th><th>Ch15</th><th>Ch16</th></tr>
+        <tr align="center" height="30px"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table><br>
+</body>
+</html>

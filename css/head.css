@@ -1,0 +1,105 @@
+html, body {
+    background-color: #1B1D22;
+    padding: 0 8px;
+    margin: 0;
+    font-size:85%;
+}
+#tabArea {
+    padding: 15px 15px 0px;
+    height: 29px;
+}
+    #Rolandlogo {
+        float: left;
+        padding: 5px 0 5px 0;
+        height: 19px;
+        margin-right: 20px;
+    }
+    #Integralogo {
+        float: left;
+        padding: 7px 0 7px 0;
+        height: 15px;
+        margin-right: 30px;
+    }
+    #tabset {
+        float: left;
+        margin-right: 20px;
+    }
+    #tabset2 {
+        float: right;
+    }
+#selectBox {
+    clear: both;
+    padding: 5px 15px 0px;
+    height: 40px;
+}
+    #studioSetBox {
+        width: 200px;
+        height: 100%;
+        float: left;
+        margin-right: 50px;
+    }
+        select#studioSetSelect{
+            width:200px;
+            position:absolute;
+        }
+        input#currentStudioSet {
+            z-index: 1;
+            width:180px;
+            position: absolute;
+        }
+    #toneTypeBox {
+        width :90px;
+        height: 100%;
+        float: left;
+        margin-right: 10px;
+    }
+        select#type {
+            width:90px;
+        }
+    #toneBankBox {
+        width :90px;
+        height: 100%;
+        float: left;
+        margin-right: 10px;
+    }
+        select#bank {
+            width:90px;
+        }
+    #toneCategoryBox {
+        width :150px;
+        height: 100%;
+        float: left;
+        margin-right: 10px;
+    }
+        select#category {
+            width:150px;
+        }
+    #toneNoBox {
+        width: 200px;
+        height: 100%;
+        float: left;
+    }
+        input#currentToneName {
+            width: 180px;
+            z-index: 1;
+            position: absolute;
+        }
+        select#toneNoSelect{
+            width: 200px;
+            position: absolute;
+        }
+#partBox {
+    clear: both;
+    padding: 0px 15px 15px 15px;
+}
+span.title {
+	font-size: 12px;
+	color: #eeeeee;
+}
+#partset .ui-button {
+    width: 40px;
+}
+#partset .ui-button-text-only .ui-button-text {
+    padding-left: 0;
+    padding-right: 0;
+}

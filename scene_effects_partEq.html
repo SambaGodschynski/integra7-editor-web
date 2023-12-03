@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- widget -->
+    <script src="js/view/widget/widget_slider.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_effects_controller.js"></script>
+
+<!-- view -->
+   <script src="js/view/ui_midi_def.js"></script>
+    <script src="js/view/scene_effects_partEq.js"></script>
+
+<style>
+     td.partEqFreq{
+        background-color:#262626;
+        text-align: center;
+        width:10%;
+        min-width:30px;
+    }
+    table {
+        margin-left: 50px;
+        width: 60%;
+    }
+
+</style>
+
+</head>
+<body>
+<a name="partEq">
+<h1>PART EQ</h1>
+</a>
+<table>
+    <tr class="button"><td>EQ Sw</td><td class="PRM-_PRF-_FPEQ1-NEFPEQ_EQ_SW"></td></tr>
+</table><br>
+
+<div class="partEq">
+    <table>
+        <tr class="selector"><td class="partEqFreq" rowspan="2">LOW</td><td>CUT OFF</td><td class="PRM-_PRF-_FPEQ1-NEFPEQ_EQ_LOWFREQ"></td></tr>
+        <tr class="slider"><td>GAIN</td><td class="PRM-_PRF-_FPEQ1-NEFPEQ_EQ_LOWGAIN"></td></tr>
+    </table><br>
+    <table>
+        <tr class="selector"><td class="partEqFreq" rowspan="3">MID</td><td>CUT OFF</td><td class="PRM-_PRF-_FPEQ1-NEFPEQ_EQ_MIDFREQ"></td></tr>
+        <tr class="slider"><td>GAIN</td><td class="PRM-_PRF-_FPEQ1-NEFPEQ_EQ_MIDGAIN"></td></tr>
+        <tr class="selector"><td>Q</td><td class="PRM-_PRF-_FPEQ1-NEFPEQ_EQ_MIDQ"></td></tr>
+    </table><br>
+    <table>
+        <tr class="selector"><td class="partEqFreq" rowspan="2">HIGH</td><td>CUT OFF</td><td class="PRM-_PRF-_FPEQ1-NEFPEQ_EQ_HIGHFREQ"></td></tr>
+        <tr class="slider"><td>GAIN</td><td class="PRM-_PRF-_FPEQ1-NEFPEQ_EQ_HIGHGAIN"></td></tr>
+    </table>
+    <br>
+</div>
+
+
+</body>
+</html>

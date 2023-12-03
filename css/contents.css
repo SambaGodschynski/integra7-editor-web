@@ -1,0 +1,27 @@
+html, body {
+    background-color: #333333;
+    color: #eeeeee;
+    font-size: 90%;
+}
+.ui-button {
+    font-size: 12px;
+    width: 43px;
+}
+.ui-button-text-only .ui-button-text {
+    padding-left: 0;
+    padding-right: 0;
+}
+table {
+	border-collapse: collapse;
+	table-layout: auto;
+    border: 1px solid #282828;
+}
+table th, table td {
+    border: 1px solid #282828;
+    height: 34px;
+}
+h1, h2 {
+    color: #aaaaaa;
+    padding: 20px 0 5px 10px;
+    margin: 0;
+}

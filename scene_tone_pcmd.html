@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- widget -->
+    <script src="js/view/widget/widget_slider.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_tone_pcmd_controller.js"></script>
+
+<!-- view -->
+    <script src="js/view/scene_tone_pcmd.js"></script>
+
+	<style>
+    table {
+        margin-left: 50px;
+        width: 60%;
+    }
+    table.wave {
+        margin-right: 15px;
+        width: 90%;
+    }
+    tr.module td, tr.cmpEqHeader{
+        text-align: center;
+        background-color: #262626;
+    }
+    table h3 {
+        margin: 2px 0 2px 0;
+    }
+    table#cmpEqTable {
+        margin-right: 15px;
+        width: 90%;
+    }
+    table#cmpEqTable tr.button {
+        text-align: center;
+    }
+
+</style>
+
+</head>
+<body>
+
+
+<a name="common">
+<h2>COMMON</h2>
+</a>
+<table class="tonePcmdTable">
+    <tr class="selector"><td>Phrase Number</td><td class="PRM-_FPART1-_RHY-_RC2-RFRC2_PHRASE"></td></tr>
+    <tr class="slider"><td>Drum Kit Level</td><td class="PRM-_FPART1-_RHY-_RC-RFRC_LEVEL"></td></tr>
+    <tr class="text"><td>Partial Name</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_NAME"></td></tr>
+    <tr class="selector"><td>Assign Type</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_ASGN_TYPE"></td></tr>
+    <tr class="selector"><td>Mute Group</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_MUTE_GRP"></td></tr>
+    <tr class="selector"><td>Partial Env Mode</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_ENV_MODE"></td></tr>
+    <tr class="slider"><td>Partial Pitch Bend Range</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_BEND_RANGE"></td></tr>
+    <tr class="button"><td>Partial Rx Expression</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_RX_EXPR"></td></tr>
+    <tr class="button"><td>Partial Rx Hold-1</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_RX_HOLD"></td></tr>
+    <tr class="button"><td>One Shot Mode</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_ONE_SHOT"></td></tr>
+</table>
+<br>
+
+<a name="wave"><h2>WAVE</h2></a>
+<table class="wave">
+    <tr class="module"><td></td></tr>
+    <!-- <tr class="selector"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__WAV_GTYPE">Wave Group</td></tr> -->
+    <tr class="selector"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__WAV_GID">Wave Group</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__WAV_NUML">Wave No.L(Mono)</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__WAV_NUMR">Wave No.R</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__WAV_GAIN">Wave Gain</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__TEMPO_SYNC">Wave Tempo Sync</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__FXM_SW">Wave FXM Switch</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__FXM_COLOR">Wave FXM Color</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__FXM_DEPTH">Wave FXM Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__PIT_CRS">Wave Coarse Tune</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__PIT_FINE">Wave Fine Tune</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__LEVEL">Wave Level</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__PAN">Wave Pan</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__PAN_RND">Wave Random Pan Sw</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__PAN_ALT">Wave Alternate Pan Sw</td></tr>
+</table>
+
+<a name="wmt"><h2>WMT</h2></a>
+<table class="tonePcmdTable">
+    <tr class="selector"><td>WMT Velocity Control</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_VELO_CTRL"></td></tr>
+</table>
+<table class="wave">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__VFADE_UP">Velo Fade Upper</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__VRANGE_UP">Velo Range Upper</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__VRANGE_LO">Velo Range Lower</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_RHY-_RT_partial_-RFRT_WMT_wave__VFADE_LO">Velo Fade Lower</td></tr>
+</table>
+
+<a name="pitch"><h2>PITCH</h2></a>
+<table class="tonePcmdTable">
+    <tr class="slider"><td>Partial Coarse Tune</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_SRC_KEY"></td></tr>
+    <tr class="slider"><td>Partial Fine Tune</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PIT_FINE"></td></tr>
+    <tr class="slider"><td>Partial Random Pitch Depth</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PIT_RND"></td></tr>
+</table>
+
+<a name="pitchEnv"><h2>PITCH ENV</h2></a>
+<table class="tonePcmdTable">
+    <tr class="slider"><td>Pitch Env Depth</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_DEPTH"></td></tr>
+    <tr class="slider"><td>Pitch Env V-Sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_VSENS"></td></tr>
+    <tr class="slider"><td>Pitch Env T1 V-sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_T1_VSENS"></td></tr>
+    <tr class="slider"><td>Pitch Env T4 V-sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_T4_VSENS"></td></tr>
+    <tr class="slider"><td>Pitch Env Time 1</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_T1"></td></tr>
+    <tr class="slider"><td>Pitch Env Time 2</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_T2"></td></tr>
+    <tr class="slider"><td>Pitch Env Time 3</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_T3"></td></tr>
+    <tr class="slider"><td>Pitch Env Time 4</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_T4"></td></tr>
+    <tr class="slider"><td>Pitch Env Level 0</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_L0"></td></tr>
+    <tr class="slider"><td>Pitch Env Level 1</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_L1"></td></tr>
+    <tr class="slider"><td>Pitch Env Level 2</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_L2"></td></tr>
+    <tr class="slider"><td>Pitch Env Level 3</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_L3"></td></tr>
+    <tr class="slider"><td>Pitch Env Level 4</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PENV_L4"></td></tr>
+</table>
+
+<a name="tvf"><h2>TVF</h2></a>
+<table class="tonePcmdTable">
+    <tr class="selector"><td>Filter Type</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FILTER_TYPE"></td></tr>
+    <tr class="slider"><td>Cutoff Frequency</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_CUTOFF"></td></tr>
+    <tr class="slider"><td>Resonance</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_RESO"></td></tr>
+    <tr class="selector"><td>Cutoff V-Curve</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_CUTOFF_VCRV"></td></tr>
+    <tr class="slider"><td>Cutoff V-Sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_CUTOFF_VSENS"></td></tr>
+    <tr class="slider"><td>Resonance V-Sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_RESO_VSENS"></td></tr>
+    <tr class="selector"><td>TVF Env V-Curve</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_VCRV"></td></tr>
+    <tr class="slider"><td>TVF Env V-sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_VSENS"></td></tr>
+    <tr class="slider"><td>TVF Env T1 V-Sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_T1_VSENS"></td></tr>
+    <tr class="slider"><td>TVF Env T4 V-Sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_T4_VSENS"></td></tr>
+</table>
+
+<a name="tvfEnv"><h2>TVF ENV</h2></a>
+<table class="tonePcmdTable">
+    <tr class="slider"><td>TVF Env Depth</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_DEPTH"></td></tr>
+    <tr class="slider"><td>TVF Env Time1</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_T1"></td></tr>
+    <tr class="slider"><td>TVF Env Time2</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_T2"></td></tr>
+    <tr class="slider"><td>TVF Env Time3</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_T3"></td></tr>
+    <tr class="slider"><td>TVF Env Time4</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_T4"></td></tr>
+    <tr class="slider"><td>TVF Env Level 0</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_L0"></td></tr>
+    <tr class="slider"><td>TVF Env Level 1</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_L1"></td></tr>
+    <tr class="slider"><td>TVF Env Level 2</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_L2"></td></tr>
+    <tr class="slider"><td>TVF Env Level 3</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_L3"></td></tr>
+    <tr class="slider"><td>TVF Env Level 4</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_FENV_L4"></td></tr>
+</table>
+
+<a name="tva"><h2>TVA</h2></a>
+<table class="tonePcmdTable">
+    <tr class="slider"><td>Partial Level</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_LEVEL"></td></tr>
+    <tr class="selector"><td>Level V-Curve</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_LEVEL_VCRV"></td></tr>
+    <tr class="slider"><td>Level V-Sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_LEVEL_VSENS"></td></tr>
+    <tr class="slider"><td>Partial Pan</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PAN"></td></tr>
+    <tr class="slider"><td>Random Pan Depth</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PAN_RND"></td></tr>
+    <tr class="slider"><td>Alternate Pan Depth</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_PAN_ALT"></td></tr>
+    <tr class="slider"><td>Relative Level</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_LEVEL_MOD"></td></tr>
+</table>
+
+<a name="tvaEnv"><h2>TVA ENV</h2></a>
+<table class="tonePcmdTable">
+    <tr class="slider"><td>TVA Env T1 V-Sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_AENV_T1_VSENS"></td></tr>
+    <tr class="slider"><td>TVA Env T4 V-Sens</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_AENV_T4_VSENS"></td></tr>
+    <tr class="slider"><td>TVA Env Time 1</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_AENV_T1"></td></tr>
+    <tr class="slider"><td>TVA Env Time 2</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_AENV_T2"></td></tr>
+    <tr class="slider"><td>TVA Env Time 3</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_AENV_T3"></td></tr>
+    <tr class="slider"><td>TVA Env Time 4</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_AENV_T4"></td></tr>
+    <tr class="slider"><td>TVA Env Level 1</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_AENV_L1"></td></tr>
+    <tr class="slider"><td>TVA Env Level 2</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_AENV_L2"></td></tr>
+    <tr class="slider"><td>TVA Env Level 3</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_AENV_L3"></td></tr>
+</table>
+
+<a name="output"><h2>OUTPUT</h2></a>
+<table class="tonePcmdTable">
+    <tr class="selector"><td>Partial Output Assign</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_OUT_ASGN"></td></tr>
+    <tr class="slider"><td>Partial Output Level</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_DRY_SEND"></td></tr>
+    <tr class="slider"><td>Partial Chorus Send Level</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_CHO_SEND_A"></td></tr>
+    <tr class="slider"><td>Partial Reverb Send Level</td><td class="PRM-_FPART1-_RHY-_RT_partial_-RFRT_REV_SEND_A"></td></tr>
+</table>
+
+<a name="compEq"><h2>COMP+EQ</h2></a>
+<table class="tonePcmdTable">
+    <tr class="selector"><td>Drum Comp+EQ Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ_PART"></td></tr>
+    <tr class="button"><td>Comp+EQ Switch</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ_SW"></td></tr>
+</table><br>
+
+<table id="cmpEqTable">
+    <tr class="cmpEqHeader"><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+    <tbody id="cmpEqBody">
+        <tr class="button"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_COMP_num__SW"><h3>COMP</h3></td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_COMP_num__ATTACK">Attack Time</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_COMP_num__RELEASE">Release Time</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_COMP_num__THRESHOLD">Threshold</td></tr>
+        <tr class="selector"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_COMP_num__RATIO">Ratio</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_COMP_num__POSTGAIN">Output Gain</td></tr>
+    <tr class="cmpEqHeader"><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+        <tr class="button" style="border-top: 1px solid #bbbbbb;"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_EQ_num__SW"><h3>EQ</h3></td></tr>
+        <tr class="selector"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_EQ_num__LOWFREQ">Low Freq</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_EQ_num__LOWGAIN">Low Gain</td></tr>
+        <tr class="selector"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_EQ_num__MIDFREQ">Mid Freq</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_EQ_num__MIDGAIN">Mid Gain</td></tr>
+        <tr class="selector"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_EQ_num__MIDQ">Mid Q</td></tr>
+        <tr class="selector"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_EQ_num__HIGHFREQ">Hight Freq</td></tr>
+        <tr class="slider"><td id="PRM-_FPART1-_RHY-_RCQ-RFRCQ_EQ_num__HIGHGAIN">Hight Gain</td></tr>
+    </tbody>
+</table>
+
+<a name="compEqOut"><h2>COMP+EQ OUTPUT</h2>
+</a>
+<div id="cmpEqOut">
+    <table class="tonePcmdTable">
+        <tr class="selector"><td>Comp+Eq 1 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ1_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+Eq 2 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ2_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+Eq 3 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ3_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+Eq 4 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ4_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+Eq 5 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ5_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+Eq 6 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ6_ASSIGN"></td></tr>
+    </table>
+</div>
+
+
+<br>
+
+</body>
+</html>

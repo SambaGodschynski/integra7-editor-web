@@ -1,0 +1,48 @@
+//
+//  PCM_SYNTH-SRX_01.js
+//
+//  Copyright 2014 Roland Corporation. All rights reserved.
+//
+globals.parameter.presetTone.pcmSynthSrx01 = [
+	[	0,	93,	0,	0,	CATEG_DRM ,	"Kick 1  Menu"	],
+	[	1,	93,	0,	1,	CATEG_DRM ,	"Kick 2  Menu"	],
+	[	2,	93,	0,	2,	CATEG_DRM ,	"Kick 3  Menu"	],
+	[	3,	93,	0,	3,	CATEG_DRM ,	"Kick 4  Menu"	],
+	[	4,	93,	0,	4,	CATEG_DRM ,	"OldFnkS Menu"	],
+	[	5,	93,	0,	5,	CATEG_DRM ,	"Latin S Menu"	],
+	[	6,	93,	0,	6,	CATEG_DRM ,	"HiPiccS Menu"	],
+	[	7,	93,	0,	7,	CATEG_DRM ,	"Tight S Menu"	],
+	[	8,	93,	0,	8,	CATEG_DRM ,	"StdRk1S Menu"	],
+	[	9,	93,	0,	9,	CATEG_DRM ,	"StdRk2S Menu"	],
+	[	10,	93,	0,	10,	CATEG_DRM ,	"OhBabyS Menu"	],
+	[	11,	93,	0,	11,	CATEG_DRM ,	"PoppinS Menu"	],
+	[	12,	93,	0,	12,	CATEG_DRM ,	"StdFatS Menu"	],
+	[	13,	93,	0,	13,	CATEG_DRM ,	"JazStkS Menu"	],
+	[	14,	93,	0,	14,	CATEG_DRM ,	"StdJazS Menu"	],
+	[	15,	93,	0,	15,	CATEG_DRM ,	"BalladS Menu"	],
+	[	16,	93,	0,	16,	CATEG_DRM ,	"PwrBldS Menu"	],
+	[	17,	93,	0,	17,	CATEG_DRM ,	"AlBeefS Menu"	],
+	[	18,	93,	0,	18,	CATEG_DRM ,	"BigRckS Menu"	],
+	[	19,	93,	0,	19,	CATEG_DRM ,	"70BrshS Menu"	],
+	[	20,	93,	0,	20,	CATEG_DRM ,	"JzBrshS Menu"	],
+	[	21,	93,	0,	21,	CATEG_DRM ,	"CrsStk  Menu"	],
+	[	22,	93,	0,	22,	CATEG_DRM ,	"Latin T Menu"	],
+	[	23,	93,	0,	23,	CATEG_DRM ,	"Tight T Menu"	],
+	[	24,	93,	0,	24,	CATEG_DRM ,	"JazStkT Menu"	],
+	[	25,	93,	0,	25,	CATEG_DRM ,	"OldFnkT Menu"	],
+	[	26,	93,	0,	26,	CATEG_DRM ,	"OhBabyT Menu"	],
+	[	27,	93,	0,	27,	CATEG_DRM ,	"PwrBldT Menu"	],
+	[	28,	93,	0,	28,	CATEG_DRM ,	"BigRckT Menu"	],
+	[	29,	93,	0,	29,	CATEG_DRM ,	"OldBrsT Menu"	],
+	[	30,	93,	0,	30,	CATEG_DRM ,	"OhBabyH Menu"	],
+	[	31,	93,	0,	31,	CATEG_DRM ,	"JazStkH Menu"	],
+	[	32,	93,	0,	32,	CATEG_DRM ,	"Latin H Menu"	],
+	[	33,	93,	0,	33,	CATEG_DRM ,	"Disco H Menu"	],
+	[	34,	93,	0,	34,	CATEG_DRM ,	"OldFnkH Menu"	],
+	[	35,	93,	0,	35,	CATEG_DRM ,	"StreetH Menu"	],
+	[	36,	93,	0,	36,	CATEG_DRM ,	"BigRckH Menu"	],
+	[	37,	93,	0,	37,	CATEG_DRM ,	"OldBrsH Menu"	],
+	[	38,	93,	0,	38,	CATEG_DRM ,	"Crash   Menu"	],
+	[	39,	93,	0,	39,	CATEG_DRM ,	"Ride    Menu"	],
+	[	40,	93,	0,	40,	CATEG_DRM ,	"OthrCym Menu"	]
+];

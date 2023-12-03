@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- widget -->
+    <script src="js/view/widget/widget_slider.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_tone_sna_controller.js"></script>
+
+<!-- view -->
+    <script src="js/view/scene_tone_sna.js"></script>
+
+	<style>
+    table {
+        margin-left: 50px;
+        width: 60%;
+    }
+</style>
+
+</head>
+<body>
+
+
+<a name="common">
+<h2>COMMON</h2>
+</a>
+<div id="common">
+<table class="toneSnaTable">
+    <tr id="category" class="selector"><td>Tone Category</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_CATE"></td></tr>
+    <tr class="selector"><td>Phrase Number</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_PHRASE"></td></tr>
+    <tr class="slider"><td>Phrase Oct Shift</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_PHRASE_OCT"></td></tr>
+    <tr class="slider"><td>Tone Level</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_TONE_LEVEL"></td></tr>
+    <tr class="selector"><td>Mono/Poly</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_MONO_POLY"></td></tr>
+    <tr class="slider"><td>Oct Shift</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_OCTAVE"></td></tr>
+    <tr class="slider"><td>Cutoff Offset</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_CUTOFF_OFST"></td></tr>
+    <tr class="slider"><td>Resonance Offset</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_RESO_OFST"></td></tr>
+    <tr class="slider"><td>Attack Time Offset</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_ATK_OFST"></td></tr>
+    <tr class="slider"><td>Release Time Offset</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_REL_OFST"></td></tr>
+    <tr class="slider"><td>Portamento Time Offset</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_PORT_TIME"></td></tr>
+    <tr class="slider"><td>Vibrato Rate</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_VIB_RATE"></td></tr>
+    <tr class="slider"><td>Vibrato Depth</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_VIB_DEPTH"></td></tr>
+    <tr class="slider"><td>Vibrato Delay</td><td class="PRM-_FPART1-_SNTONE-_SNTC-SNTC_VIB_DELAY"></td></tr>
+</table>
+</div>
+
+<a name="inst">
+<h2>INST</h2>
+</a>
+
+<table class="inst">
+    <tr><td>Inst Bank</td><td><select id="instBank"></select></td></tr>
+    <tr><td>Inst Number</td><td><select id="instNumber"></select></td></tr>
+</table>
+
+<table class="parameter" id="param">
+</table>
+<br>
+
+</body>
+</html>

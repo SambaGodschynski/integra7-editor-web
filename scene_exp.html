@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_exp_controller.js"></script>
+
+<!-- view -->
+    <script src="js/view/scene_exp.js"></script>
+
+<style>
+    table {
+        margin-left: 50px;
+        border: none;
+    }
+    #load {
+        width: 55px;
+    }
+    .ui-button {
+        margin-top: 20px;
+        margin-left: 50px;
+    }
+    table td {
+        border: none;
+    }
+</style>
+
+</head>
+<body>
+
+<a name="tone">
+<h2>VIRTUAL SLOT</h2>
+</a>
+
+<table class="exp">
+    <tr><td>A</td><td><select id="expA"></select></td></tr>
+    <tr><td>B</td><td><select id="expB"></select></td></tr>
+    <tr><td>C</td><td><select id="expC"></select></td></tr>
+    <tr><td>D</td><td><select id="expD"></select></td></tr>
+</table>
+
+<button type="button" id="load">LOAD</button><br>
+
+</body>
+</html>

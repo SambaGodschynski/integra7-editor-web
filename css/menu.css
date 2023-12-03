@@ -1,0 +1,39 @@
+html, body {
+    background-color: #333333;
+    color: #eeeeee;
+    min-width: 150px;
+    font-size: 95%;
+}
+ul#menu {
+    margin: 0 15px;
+}
+li {
+    margin: 0.8em;
+}
+li.link {
+    margin-left: 2em;
+    font-size: 90%;
+}
+.toneType {
+    color: #aaaaaa;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 1.2em;
+}
+li:hover{
+    color: #aaaaaa;
+}
+li.utilMenu {
+	margin-left: 2em;
+	font-size: 90%;
+}
+/* current partial selector (SN-D and PCM-D) */
+#partialArea {
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+select {
+    width: 100px;
+    vertical-align:middle;
+    margin-left :10px;
+}

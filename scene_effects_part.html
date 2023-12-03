@@ -1,0 +1,1206 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- widget -->
+    <script src="js/view/widget/widget_slider.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_effects_controller.js"></script>
+
+<!-- view -->
+   <script src="js/view/ui_midi_def.js"></script>
+    <script src="js/view/scene_effects_part.js"></script>
+
+<style>
+    td.ctrlNum {
+        background-color:#262626;
+        text-align: center;
+        width:10%;
+        min-width:30px;
+    }
+    table {
+        margin-left: 50px;
+        width: 60%;
+    }
+
+</style>
+
+</head>
+<body>
+<a name="top">
+<h1>TONE</h1>
+</a>
+
+<a name="mfx">
+<h2>MFX</h2>
+</a>
+<table class="common">
+    <tr class="button"><td>MFX Switch</td><td class="PRM-_FPART1-__currentTFX__TFX_SW"></td></tr>
+    <tr class="selector"><td>MFX Type</td><td class="PRM-_FPART1-__currentToneType__MFX_TYPE"></td></tr>
+    <tr class="slider"><td>MFX Chorus Send Level</td><td class="PRM-_FPART1-__currentToneType__MFX_CHO_SEND"></td></tr>
+    <tr class="slider"><td>MFX Reverb Send Level</td><td class="PRM-_FPART1-__currentToneType__MFX_REV_SEND"></td></tr>
+</table>
+
+<!-- mfxTypeによって表示設定を切り替えるparameter郡 -->
+    <table class="mfxParameter" id="thru"></table>
+
+    <!-- mfx 01 -->
+    <table class="mfxParameter" id="equalizer">
+        <tr><td>Low Freq</td><td class="selector"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>Mid1 Freq</td><td class="selector"></td></tr>
+        <tr><td>Mid1 Gain</td><td class="slider"></td></tr>
+        <tr><td>Mid1 Q</td><td class="selector"></td></tr>
+        <tr><td>Mid2 Freq</td><td class="selector"></td></tr>
+        <tr><td>Mid2 Gain</td><td class="slider"></td></tr>
+        <tr><td>Mid2 Q</td><td class="selector"></td></tr>
+        <tr><td>High Freq</td><td class="selector"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 02 -->
+    <table class="mfxParameter" id="spectrum">
+        <tr><td>Band1 (250Hz)</td><td class="slider"></td></tr>
+        <tr><td>Band2 (500Hz)</td><td class="slider"></td></tr>
+        <tr><td>Band3 (1000Hz)</td><td class="slider"></td></tr>
+        <tr><td>Band4 (1250Hz)</td><td class="slider"></td></tr>
+        <tr><td>Band5 (2000Hz)</td><td class="slider"></td></tr>
+        <tr><td>Band6 (3150Hz)</td><td class="slider"></td></tr>
+        <tr><td>Band7 (4000Hz)</td><td class="slider"></td></tr>
+        <tr><td>Band8 (8000Hz)</td><td class="slider"></td></tr>
+        <tr><td>Q</td><td class="selector"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 03 -->
+    <table class="mfxParameter" id="lowBoost">
+        <tr><td>Boost Frequency</td><td class="slider"></td></tr>
+        <tr><td>Boost Gain</td><td class="slider"></td></tr>
+        <tr><td>Boost Width</td><td class="selector"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 04 -->
+    <table class="mfxParameter" id="stepFilter">
+        <tr><td>Step 01</td><td class="slider"></td></tr>
+        <tr><td>Step 02</td><td class="slider"></td></tr>
+        <tr><td>Step 03</td><td class="slider"></td></tr>
+        <tr><td>Step 04</td><td class="slider"></td></tr>
+        <tr><td>Step 05</td><td class="slider"></td></tr>
+        <tr><td>Step 06</td><td class="slider"></td></tr>
+        <tr><td>Step 07</td><td class="slider"></td></tr>
+        <tr><td>Step 08</td><td class="slider"></td></tr>
+        <tr><td>Step 09</td><td class="slider"></td></tr>
+        <tr><td>Step 10</td><td class="slider"></td></tr>
+        <tr><td>Step 11</td><td class="slider"></td></tr>
+        <tr><td>Step 12</td><td class="slider"></td></tr>
+        <tr><td>Step 13</td><td class="slider"></td></tr>
+        <tr><td>Step 14</td><td class="slider"></td></tr>
+        <tr><td>Step 15</td><td class="slider"></td></tr>
+        <tr><td>Step 16</td><td class="slider"></td></tr>
+
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Attack</td><td class="slider"></td></tr>
+        <tr><td>Filter Type</td><td class="selector"></td></tr>
+        <tr><td>Filter Slope</td><td class="selector"></td></tr>
+        <tr><td>Filter Resonance</td><td class="slider"></td></tr>
+        <tr><td>Filter Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 05 -->
+    <table class="mfxParameter" id="enhancer">
+
+        <tr><td>Sens</td><td class="slider"></td></tr>
+        <tr><td>Mix</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 06 -->
+    <table class="mfxParameter" id="autoWah">
+        <tr><td>Filter Type</td><td class="selector"></td></tr>
+        <tr><td>Manual</td><td class="slider"></td></tr>
+        <tr><td>Peak</td><td class="slider"></td></tr>
+        <tr><td>Sens</td><td class="slider"></td></tr>
+        <tr><td>Polarity</td><td class="selector"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Phase</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 07 -->
+    <table class="mfxParameter" id="humanizer">
+        <tr><td>Drive Sw</td><td class="button"></td></tr>
+        <tr><td>Drive</td><td class="slider"></td></tr>
+        <tr><td>Vowel1</td><td class="selector"></td></tr>
+        <tr><td>Vowel2</td><td class="selector"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Input Sync Sw</td><td class="button"></td></tr>
+        <tr><td>Input Sync Threshold</td><td class="slider"></td></tr>
+        <tr><td>Manual</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Pan</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 08 -->
+    <table class="mfxParameter" id="speakerSimulator">
+        <tr><td>Type</td><td class="selector"></td></tr>
+        <tr><td>Mic Setting</td><td class="selector"></td></tr>
+        <tr><td>Mic Level</td><td class="slider"></td></tr>
+        <tr><td>Direct Level</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 09 -->
+    <table class="mfxParameter" id="phaser1">
+        <tr><td>Mode</td><td class="selector"></td></tr>
+        <tr><td>Manual</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Polarity</td><td class="selector"></td></tr>
+        <tr><td>Resonance</td><td class="slider"></td></tr>
+        <tr><td>Cross Feedback</td><td class="slider"></td></tr>
+        <tr><td>Mix</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 10 -->
+    <table class="mfxParameter" id="phaser2">
+        <tr><td>Rate</td><td class="slider"></td></tr>
+        <tr><td>Color</td><td class="selector"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 11 -->
+    <table class="mfxParameter" id="phaser3">
+        <tr><td>Speed</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 12 -->
+    <table class="mfxParameter" id="stepPhaser">
+        <tr><td>Mode</td><td class="selector"></td></tr>
+        <tr><td>Manual</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></div></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Polarity</td><td class="selector"></td></tr>
+        <tr><td>Resonance</td><td class="slider"></td></tr>
+        <tr><td>Cross Feedback</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Step Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Mix</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 13 -->
+    <table class="mfxParameter" id="multiStagePhaser">
+        <tr><td>Mode</td><td class="selector"></td></tr>
+        <tr><td>Manual</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Resonance </td><td class="slider"></td></tr>
+        <tr><td>Mix</td><td class="slider"></td></tr>
+        <tr><td>Pan</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 14 -->
+    <table class="mfxParameter" id="infinitePhaser">
+        <tr><td>Mode</td><td class="selector"></td></tr>
+        <tr><td>Speed</td><td class="slider"></td></tr>
+        <tr><td>Resonance</td><td class="slider"></td></tr>
+        <tr><td>Mix</td><td class="slider"></td></tr>
+        <tr><td>Pan</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 15 -->
+    <table class="mfxParameter" id="ringModulator">
+        <tr><td>Frequency</td><td class="slider"></td></tr>
+        <tr><td>Sens</td><td class="slider"></td></tr>
+        <tr><td>Polarity</td><td class="selector"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 16 -->
+    <table class="mfxParameter" id="tremolo">
+        <tr><td>Mod Wave</td><td class="selector"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 17 -->
+    <table class="mfxParameter" id="autoPan">
+        <tr><td>Mod Wave</td><td class="selector"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 18 -->
+    <table class="mfxParameter" id="slicer">
+        <tr><td>Step 01</td><td class="slider"></td></tr>
+        <tr><td>Step 02</td><td class="slider"></td></tr>
+        <tr><td>Step 03</td><td class="slider"></td></tr>
+        <tr><td>Step 04</td><td class="slider"></td></tr>
+        <tr><td>Step 05</td><td class="slider"></td></tr>
+        <tr><td>Step 06</td><td class="slider"></td></tr>
+        <tr><td>Step 07</td><td class="slider"></td></tr>
+        <tr><td>Step 08</td><td class="slider"></td></tr>
+        <tr><td>Step 09</td><td class="slider"></td></tr>
+        <tr><td>Step 10</td><td class="slider"></td></tr>
+        <tr><td>Step 11</td><td class="slider"></td></tr>
+        <tr><td>Step 12</td><td class="slider"></td></tr>
+        <tr><td>Step 13</td><td class="slider"></td></tr>
+        <tr><td>Step 14</td><td class="slider"></td></tr>
+        <tr><td>Step 15</td><td class="slider"></td></tr>
+        <tr><td>Step 16</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Attack</td><td class="slider"></td></tr>
+        <tr><td>Input Sync Sw</td><td class="button"></td></tr>
+        <tr><td>Input Sync Threshold</td><td class="slider"></td></tr>
+        <tr><td>Mode</td><td class="selector"></td></tr>
+        <tr><td>Shuffle</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 19 -->
+    <table class="mfxParameter" id="rotary1">
+        <tr><td>Speed</td><td class="selector"></td></tr>
+        <tr><td>Woofer Slow Speed</td><td class="slider"></td></tr>
+        <tr><td>Woofer Fast Speed</td><td class="slider"></td></tr>
+        <tr><td>Woofer Acceleration</td><td class="slider"></td></tr>
+        <tr><td>Woofer Level</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Slow Speed</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Fast Speed</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Acceleration</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Level</td><td class="slider"></td></tr>
+        <tr><td>Separation</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 20 -->
+    <table class="mfxParameter" id="rotary2">
+        <tr><td>Speed</td><td class="selector"></td></tr>
+        <tr><td>Brake</td><td class="button"></td></tr>
+        <tr><td>Woofer Slow Speed</td><td class="slider"></td></tr>
+        <tr><td>Woofer Fast Speed</td><td class="slider"></td></tr>
+        <tr><td>Woofer Trans Up</td><td class="slider"></td></tr>
+        <tr><td>Woofer Trans Down</td><td class="slider"></td></tr>
+        <tr><td>Woofer Level</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Slow Speed</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Fast Speed</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Trans Up</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Trans Down</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Level</td><td class="slider"></td></tr>
+        <tr><td>Spread</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 21 -->
+    <table class="mfxParameter" id="rotary3">
+        <tr><td>Speed</td><td class="selector"></td></tr>
+        <tr><td>Brake</td><td class="button"></td></tr>
+        <tr><td>Woofer Slow Speed</td><td class="slider"></td></tr>
+        <tr><td>Woofer Fast Speed</td><td class="slider"></td></tr>
+        <tr><td>Woofer Trans Up</td><td class="slider"></td></tr>
+        <tr><td>Woofer Trans Down</td><td class="slider"></td></tr>
+        <tr><td>Woofer Level</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Slow Speed</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Fast Speed</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Trans Up</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Trans Down</td><td class="slider"></td></tr>
+        <tr><td>Tweeter Level</td><td class="slider"></td></tr>
+        <tr><td>Spread</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+        <tr><td>OD Switch</td><td class="button"></td></tr>
+        <tr><td>OD Gain</td><td class="slider"></td></tr>
+        <tr><td>OD Drive</td><td class="slider"></td></tr>
+        <tr><td>OD Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 22 -->
+    <table class="mfxParameter" id="chorus">
+        <tr><td>Filter Type</td><td class="selector"></td></tr>
+        <tr><td>Cutoff Freq</td><td class="selector"></td></tr>
+        <tr><td>Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Phase</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 23 -->
+    <table class="mfxParameter" id="flanger">
+        <tr><td>Filter Type</td><td class="selector"></td></tr>
+        <tr><td>Cutoff Freq</td><td class="selector"></td></tr>
+        <tr><td>Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Phase</td><td class="slider"></td></tr>
+        <tr><td>Feedback</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 24 -->
+    <table class="mfxParameter" id="stepFlanger">
+        <tr><td>Filter Type</td><td class="selector"></td></tr>
+        <tr><td>Cutoff Freq</td><td class="selector"></td></tr>
+        <tr><td>Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Phase</td><td class="slider"></td></tr>
+        <tr><td>Feedback</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Step Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 25 -->
+    <table class="mfxParameter" id="hexa-chorus">
+        <tr><td>Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Pre Delay Deviation</td><td class="slider"></td></tr>
+        <tr><td>Depth Deviation</td><td class="slider"></td></tr>
+        <tr><td>Pan Deviation</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 26 -->
+    <table class="mfxParameter" id="tremoloChorus">
+        <tr><td>Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Chorus Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Chorus Depth</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Tremolo Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Tremolo Separation</td><td class="slider"></td></tr>
+        <tr><td>Tremolo Phase</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 27 -->
+    <table class="mfxParameter" id="space-d">
+        <tr><td>Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Phase</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 28 -->
+    <table class="mfxParameter" id="overdrive">
+        <tr><td>Drive</td><td class="slider"></td></tr>
+        <tr><td>Tone</td><td class="slider"></td></tr>
+        <tr><td>Amp Sw</td><td class="button"></td></tr>
+        <tr><td>Amp Type</td><td class="selector"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Pan</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 29 -->
+    <table class="mfxParameter" id="distortion">
+        <tr><td>Drive</td><td class="slider"></td></tr>
+        <tr><td>Tone</td><td class="slider"></td></tr>
+        <tr><td>Amp Sw</td><td class="button"></td></tr>
+        <tr><td>Amp Type</td><td class="selector"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Pan</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 30 -->
+    <table class="mfxParameter" id="guitarAmpSimulator">
+        <tr><td>Amp Sw</td><td class="button"></td></tr>
+        <tr><td>Amp Type</td><td class="selector"></td></tr>
+        <tr><td>Amp Volume</td><td class="slider"></td></tr>
+        <tr><td>Amp Master</td><td class="slider"></td></tr>
+        <tr><td>Amp Gain</td><td class="selector"></td></tr>
+        <tr><td>Amp Bass</td><td class="slider"></td></tr>
+        <tr><td>Amp Middle</td><td class="slider"></td></tr>
+        <tr><td>Amp Treble</td><td class="slider"></td></tr>
+        <tr><td>Amp Presence</td><td class="slider"></td></tr>
+        <tr><td>Amp Bright</td><td class="button"></td></tr>
+        <tr><td>Speaker Sw</td><td class="button"></td></tr>
+        <tr><td>Speaker Type</td><td class="selector"></td></tr>
+        <tr><td>Mic Setting</td><td class="selector"></td></tr>
+        <tr><td>Mic Level</td><td class="slider"></td></tr>
+        <tr><td>Direct Level</td><td class="slider"></td></tr>
+        <tr><td>Pan</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 31 -->
+    <table class="mfxParameter" id="compressor">
+        <tr><td>Attack</td><td class="slider"></td></tr>
+        <tr><td>Threshold</td><td class="slider"></td></tr>
+        <tr><td>Post Gain</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 32 -->
+    <table class="mfxParameter" id="limiter">
+        <tr><td>Release</td><td class="slider"></td></tr>
+        <tr><td>Threshold</td><td class="slider"></td></tr>
+        <tr><td>Ratio</td><td class="selector"></td></tr>
+        <tr><td>Post Gain</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 33 -->
+    <table class="mfxParameter" id="gate">
+        <tr><td>Threshold</td><td class="slider"></td></tr>
+        <tr><td>Mode</td><td class="selector"></td></tr>
+        <tr><td>Attack</td><td class="slider"></td></tr>
+        <tr><td>Hold</td><td class="slider"></td></tr>
+        <tr><td>Release</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 34 -->
+    <table class="mfxParameter" id="delay">
+        <tr class="rate"><td rowspan="3">Delay Right</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Left</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Phase Left</td><td class="selector"></td></tr>
+        <tr><td>Phase Right</td><td class="selector"></td></tr>
+        <tr><td>Feedback Mode</td><td class="selector"></td></tr>
+        <tr><td>Feedback</td><td class="slider"></td></tr>
+        <tr><td>HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 35 -->
+    <table class="mfxParameter" id="modulationDelay">
+        <tr class="rate"><td rowspan="3">Delay Left</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Right</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Feedback Mode</td><td class="selector"></td></tr>
+        <tr><td>Feedback</td><td class="slider"></td></tr>
+        <tr><td>HF Damp</td><td class="selector"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Phase</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 36 -->
+    <table class="mfxParameter" id="3tapPanDelay">
+        <tr class="rate"><td rowspan="3">Delay Left</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Right</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Center</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Center Feedback</td><td class="slider"></td></tr>
+        <tr><td>HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Left Level</td><td class="slider"></td></tr>
+        <tr><td>Right Level</td><td class="slider"></td></tr>
+        <tr><td>Center Level</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 37 -->
+    <table class="mfxParameter" id="4tapPanDelay">
+        <tr class="rate"><td rowspan="3">Delay 1 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay 2 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay 3 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay 4 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Delay 1 Feedback</td><td class="slider"></td></tr>
+        <tr><td>HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Delay 1 Level</td><td class="slider"></td></tr>
+        <tr><td>Delay 2 Level</td><td class="slider"></td></tr>
+        <tr><td>Delay 3 Level</td><td class="slider"></td></tr>
+        <tr><td>Delay 4 Level</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 38 -->
+    <table class="mfxParameter" id="multiTapDelay">
+        <tr class="rate"><td rowspan="3">Delay 1 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay 2 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay 3 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay 4 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Delay 1 Feedback</td><td class="slider"></td></tr>
+        <tr><td>HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Delay 1 Pan</td><td class="slider"></td></tr>
+        <tr><td>Delay 2 Pan</td><td class="slider"></td></tr>
+        <tr><td>Delay 3 Pan</td><td class="slider"></td></tr>
+        <tr><td>Delay 4 Pan</td><td class="slider"></td></tr>
+        <tr><td>Delay 1 Level</td><td class="slider"></td></tr>
+        <tr><td>Delay 2 Level</td><td class="slider"></td></tr>
+        <tr><td>Delay 3 Level</td><td class="slider"></td></tr>
+        <tr><td>Delay 4 Level</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 39 -->
+    <table class="mfxParameter" id="reverseDelay">
+        <tr><td>Threshold</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rev Delay Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Rev Delay Feedback</td><td class="slider"></td></tr>
+        <tr><td>Rev Delay HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Rev Delay Pan</td><td class="slider"></td></tr>
+        <tr><td>Rev Delay Level</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay 1 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay 2 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay 3 Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Delay 3 Feedback</td><td class="slider"></td></tr>
+        <tr><td>Delay HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Delay 1 Pan</td><td class="slider"></td></tr>
+        <tr><td>Delay 2 Pan</td><td class="slider"></td></tr>
+        <tr><td>Delay 1 Level</td><td class="slider"></td></tr>
+        <tr><td>Delay 2 Level</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 40 -->
+    <table class="mfxParameter" id="timeCtrlDelay">
+        <tr class="rate"><td rowspan="3">Delay Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Acceleration</td><td class="slider"></td></tr>
+        <tr><td>Feedback</td><td class="slider"></td></tr>
+        <tr><td>HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 41 -->
+    <table class="mfxParameter" id="lofiCompress">
+        <tr><td>Pre Filter Type</td><td class="selector"></td></tr>
+        <tr><td>LoFi Type</td><td class="selector"></td></tr>
+        <tr><td>Post Filter Type</td><td class="selector"></td></tr>
+        <tr><td>Post Filter Cutofff</td><td class="selector"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 42 -->
+    <table class="mfxParameter" id="bitCrasher">
+        <tr><td>Sample Rate</td><td class="slider"></td></tr>
+        <tr><td>Bit Down</td><td class="slider"></td></tr>
+        <tr><td>Filter</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 43 -->
+    <table class="mfxParameter" id="pitchShifter">
+        <tr><td>Coarse</td><td class="slider"></td></tr>
+        <tr><td>Fine</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Feedback</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 44 -->
+    <table class="mfxParameter" id="2voicePitchShifter">
+        <tr><td>Pitch1 Coarse</td><td class="slider"></td></tr>
+        <tr><td>Pitch1 Fine</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Pitch1 Delay</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Pitch1 Feedback</td><td class="slider"></td></tr>
+        <tr><td>Pitch1 Pan</td><td class="slider"></td></tr>
+        <tr><td>Pitch1 Level</td><td class="slider"></td></tr>
+        <tr><td>Pitch2 Coarse</td><td class="slider"></td></tr>
+        <tr><td>Pitch2 Fine</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Pitch2 Delay</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Pitch2 Feedback</td><td class="slider"></td></tr>
+        <tr><td>Pitch2 Pan</td><td class="slider"></td></tr>
+        <tr><td>Pitch2 Level</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 45 -->
+    <table class="mfxParameter" id="overdrive_chorus">
+        <tr><td>Overdrive Drive</td><td class="slider"></td></tr>
+        <tr><td>Overdrive Pan</td><td class="slider"></td></tr>
+        <tr><td>Chorus Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Chorus Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Chorus Depth</td><td class="slider"></td></tr>
+        <tr><td>Chorus Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 46 -->
+    <table class="mfxParameter" id="overdrive_flanger">
+        <tr><td>Overdrive Drive</td><td class="slider"></td></tr>
+        <tr><td>Overdrive Pan</td><td class="slider"></td></tr>
+        <tr><td>Flanger Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Flanger Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Flanger Depth</td><td class="slider"></td></tr>
+        <tr><td>Flanger Feedback</td><td class="slider"></td></tr>
+        <tr><td>Flanger Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 47 -->
+    <table class="mfxParameter" id="overdrive_delay">
+        <tr><td>Overdrive Drive</td><td class="slider"></td></tr>
+        <tr><td>Overdrive Pan</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Delay Feedback</td><td class="slider"></td></tr>
+        <tr><td>Delay HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Delay Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 48 -->
+    <table class="mfxParameter" id="distortion_chorus">
+        <tr><td>Distortion Drive</td><td class="slider"></td></tr>
+        <tr><td>Distortion Pan</td><td class="slider"></td></tr>
+        <tr><td>Chorus Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Chorus Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Chorus Depth</td><td class="slider"></td></tr>
+        <tr><td>Chorus Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 49 -->
+    <table class="mfxParameter" id="distortion_flanger">
+        <tr><td>Distortion Drive</td><td class="slider"></td></tr>
+        <tr><td>Distortion Pan</td><td class="slider"></td></tr>
+        <tr><td>Flanger Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Flanger Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Flanger Depth</td><td class="slider"></td></tr>
+        <tr><td>Flanger Feedback</td><td class="slider"></td></tr>
+        <tr><td>Flanger Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 50 -->
+    <table class="mfxParameter" id="distortion_delay">
+        <tr><td>Distortion Drive</td><td class="slider"></td></tr>
+        <tr><td>Distortion Pan</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Delay Feedback</td><td class="slider"></td></tr>
+        <tr><td>Delay HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Delay Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 51 -->
+    <table class="mfxParameter" id="odds_touchWah">
+        <tr><td>Drive Switch</td><td class="button"></td></tr>
+        <tr><td>Drive Type</td><td class="selector"></td></tr>
+        <tr><td>Drive</td><td class="slider"></td></tr>
+        <tr><td>Tone</td><td class="slider"></td></tr>
+        <tr><td>Amp Sw</td><td class="button"></td></tr>
+        <tr><td>Amp Type</td><td class="selector"></td></tr>
+        <tr><td>Touch Wah Switch</td><td class="button"></td></tr>
+        <tr><td>Touch Wah Filter Type</td><td class="selector"></td></tr>
+        <tr><td>Touch Wah Polarity</td><td class="selector"></td></tr>
+        <tr><td>Touch Wah Sens</td><td class="slider"></td></tr>
+        <tr><td>Touch Wah Manual</td><td class="slider"></td></tr>
+        <tr><td>Touch Wah Peak</td><td class="slider"></td></tr>
+        <tr><td>Touch Wah Balance</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 52 -->
+    <table class="mfxParameter" id="odds_autoWah">
+        <tr><td>Drive Switch</td><td class="button"></td></tr>
+        <tr><td>Drive Type</td><td class="selector"></td></tr>
+        <tr><td>Drive</td><td class="slider"></td></tr>
+        <tr><td>Tone</td><td class="slider"></td></tr>
+        <tr><td>Amp Sw</td><td class="button"></td></tr>
+        <tr><td>Amp Type</td><td class="selector"></td></tr>
+        <tr><td>Auto Wah Switch</td><td class="button"></td></tr>
+        <tr><td>Auto Wah Filter Type</td><td class="selector"></td></tr>
+        <tr><td>Auto Wah Manual</td><td class="slider"></td></tr>
+        <tr><td>Auto Wah Peak</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Auto Wah Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Auto Wah Depth</td><td class="slider"></td></tr>
+        <tr><td>Auto Wah Balance</td><td class="slider"></td></tr>
+        <tr><td>Low Gain</td><td class="slider"></td></tr>
+        <tr><td>High Gain</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 53 -->
+    <table class="mfxParameter" id="guitarAmpSim_chorus">
+        <tr><td>Amp Sw</td><td class="button"></td></tr>
+        <tr><td>Amp Type</td><td class="selector"></td></tr>
+        <tr><td>Amp Volume</td><td class="slider"></td></tr>
+        <tr><td>Amp Master</td><td class="slider"></td></tr>
+        <tr><td>Amp Gain</td><td class="selector"></td></tr>
+        <tr><td>Amp Bass</td><td class="slider"></td></tr>
+        <tr><td>Amp Middle</td><td class="slider"></td></tr>
+        <tr><td>Amp Treble</td><td class="slider"></td></tr>
+        <tr><td>Speaker Sw</td><td class="button"></td></tr>
+        <tr><td>Speaker Type</td><td class="selector"></td></tr>
+        <tr><td>Chorus Switch</td><td class="button"></td></tr>
+        <tr><td>Chorus Pre Delay</td><td class="slider"></td></tr>
+        <tr><td>Chorus Rate (Hz)</td><td class="slider"></td></tr>
+        <tr><td>Chorus Depth</td><td class="slider"></td></tr>
+        <tr><td>Chorus Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 54 -->
+    <table class="mfxParameter" id="guitarAmpSim_flanger">
+        <tr><td>Amp Sw</td><td class="button"></td></tr>
+        <tr><td>Amp Type</td><td class="selector"></td></tr>
+        <tr><td>Amp Volume</td><td class="slider"></td></tr>
+        <tr><td>Amp Master</td><td class="slider"></td></tr>
+        <tr><td>Amp Gain</td><td class="selector"></td></tr>
+        <tr><td>Amp Bass</td><td class="slider"></td></tr>
+        <tr><td>Amp Middle</td><td class="slider"></td></tr>
+        <tr><td>Amp Treble</td><td class="slider"></td></tr>
+        <tr><td>Speaker Sw</td><td class="button"></td></tr>
+        <tr><td>Speaker Type</td><td class="selector"></td></tr>
+        <tr><td>Flanger Switch</td><td class="button"></td></tr>
+        <tr><td>Flanger Pre Delay</td><td class="slider"></td></tr>
+        <tr><td>Flanger Rate (Hz)</td><td class="slider"></td></tr>
+        <tr><td>Flanger Depth</td><td class="slider"></td></tr>
+        <tr><td>Flanger Feedback</td><td class="slider"></td></tr>
+        <tr><td>Flanger Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 55 -->
+    <table class="mfxParameter" id="guitarAmpSim_phaser">
+        <tr><td>Amp Sw</td><td class="button"></td></tr>
+        <tr><td>Amp Type</td><td class="selector"></td></tr>
+        <tr><td>Amp Volume</td><td class="slider"></td></tr>
+        <tr><td>Amp Master</td><td class="slider"></td></tr>
+        <tr><td>Amp Gain</td><td class="selector"></td></tr>
+        <tr><td>Amp Bass</td><td class="slider"></td></tr>
+        <tr><td>Amp Middle</td><td class="slider"></td></tr>
+        <tr><td>Amp Treble</td><td class="slider"></td></tr>
+        <tr><td>Speaker Sw</td><td class="button"></td></tr>
+        <tr><td>Speaker Type</td><td class="selector"></td></tr>
+        <tr><td>Phaser Switch</td><td class="button"></td></tr>
+        <tr><td>Phaser Rate (Hz)</td><td class="slider"></td></tr>
+        <tr><td>Phaser Manual</td><td class="slider"></td></tr>
+        <tr><td>Phaser Depth</td><td class="slider"></td></tr>
+        <tr><td>Phaser Resonance</td><td class="slider"></td></tr>
+        <tr><td>Phaser Mix</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 56 -->
+    <table class="mfxParameter" id="guitarAmpSim_delay">
+        <tr><td>Amp Sw</td><td class="button"></td></tr>
+        <tr><td>Amp Type</td><td class="selector"></td></tr>
+        <tr><td>Amp Volume</td><td class="slider"></td></tr>
+        <tr><td>Amp Master</td><td class="slider"></td></tr>
+        <tr><td>Amp Gain</td><td class="selector"></td></tr>
+        <tr><td>Amp Bass</td><td class="slider"></td></tr>
+        <tr><td>Amp Middle</td><td class="slider"></td></tr>
+        <tr><td>Amp Treble</td><td class="slider"></td></tr>
+        <tr><td>Speaker Sw</td><td class="button"></td></tr>
+        <tr><td>Speaker Type</td><td class="selector"></td></tr>
+        <tr><td>Delay Switch</td><td class="button"></td></tr>
+        <tr><td>Delay Time</td><td class="slider"></td></tr>
+        <tr><td>Delay Feedback</td><td class="slider"></td></tr>
+        <tr><td>Delay HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Delay Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 57 -->
+    <table class="mfxParameter" id="epAmpSim_tremolo">
+        <tr><td>Type</td><td class="selector"></td></tr>
+        <tr><td>Bass</td><td class="slider"></td></tr>
+        <tr><td>Treble</td><td class="slider"></td></tr>
+        <tr><td>Tremolo Switch</td><td class="button"></td></tr>
+        <tr class="rate"><td rowspan="3">Tremolo Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Tremolo Depth</td><td class="slider"></td></tr>
+        <tr><td>Tremolo Duty</td><td class="slider"></td></tr>
+        <tr><td>Speaker Type</td><td class="selector"></td></tr>
+        <tr><td>OD Switch</td><td class="button"></td></tr>
+        <tr><td>OD Gain</td><td class="slider"></td></tr>
+        <tr><td>OD Drive</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 58 -->
+    <table class="mfxParameter" id="epAmpSim_chorus">
+        <tr><td>Type</td><td class="selector"></td></tr>
+        <tr><td>Bass</td><td class="slider"></td></tr>
+        <tr><td>Treble</td><td class="slider"></td></tr>
+        <tr><td>Chorus Switch</td><td class="button"></td></tr>
+        <tr><td>Chorus Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Chorus Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Chorus Depth</td><td class="slider"></td></tr>
+        <tr><td>Chorus Balance</td><td class="slider"></td></tr>
+        <tr><td>Speaker Type</td><td class="selector"></td></tr>
+        <tr><td>OD Switch</td><td class="button"></td></tr>
+        <tr><td>OD Gain</td><td class="slider"></td></tr>
+        <tr><td>OD Drive</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 59 -->
+    <table class="mfxParameter" id="epAmpSim_flanger">
+        <tr><td>Type</td><td class="selector"></td></tr>
+        <tr><td>Bass</td><td class="slider"></td></tr>
+        <tr><td>Treble</td><td class="slider"></td></tr>
+        <tr><td>Flanger Switch</td><td class="button"></td></tr>
+        <tr><td>Flanger Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Flanger Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Flanger Depth</td><td class="slider"></td></tr>
+        <tr><td>Flanger Feedback</td><td class="slider"></td></tr>
+        <tr><td>Flanger Balance</td><td class="slider"></td></tr>
+        <tr><td>Speaker Type</td><td class="selector"></td></tr>
+        <tr><td>OD Switch</td><td class="button"></td></tr>
+        <tr><td>OD Gain</td><td class="slider"></td></tr>
+        <tr><td>OD Drive</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 60 -->
+    <table class="mfxParameter" id="epAmpSim_phaser">
+        <tr><td>Type</td><td class="selector"></td></tr>
+        <tr><td>Bass</td><td class="slider"></td></tr>
+        <tr><td>Treble</td><td class="slider"></td></tr>
+        <tr><td>Phaser Switch</td><td class="button"></td></tr>
+        <tr class="rate"><td rowspan="3">Phaser Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Phaser Manual</td><td class="slider"></td></tr>
+        <tr><td>Phaser Depth</td><td class="slider"></td></tr>
+        <tr><td>Phaser Resonance</td><td class="slider"></td></tr>
+        <tr><td>Phaser Mix</td><td class="slider"></td></tr>
+        <tr><td>Speaker Type</td><td class="selector"></td></tr>
+        <tr><td>OD Switch</td><td class="button"></td></tr>
+        <tr><td>OD Gain</td><td class="slider"></td></tr>
+        <tr><td>OD Drive</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 61 -->
+    <table class="mfxParameter" id="epAmpSim_delay">
+        <tr><td>Type</td><td class="selector"></td></tr>
+        <tr><td>Bass</td><td class="slider"></td></tr>
+        <tr><td>Treble</td><td class="slider"></td></tr>
+        <tr><td>Delay Switch</td><td class="button"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Delay Acceleration</td><td class="slider"></td></tr>
+        <tr><td>Delay Feedback</td><td class="slider"></td></tr>
+        <tr><td>Delay HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Delay Balance</td><td class="slider"></td></tr>
+        <tr><td>Speaker Type</td><td class="selector"></td></tr>
+        <tr><td>OD Switch</td><td class="button"></td></tr>
+        <tr><td>OD Gain</td><td class="slider"></td></tr>
+        <tr><td>OD Drive</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 62 -->
+    <table class="mfxParameter" id="enhancer_chorus">
+        <tr><td>Enhancer Sens</td><td class="slider"></td></tr>
+        <tr><td>Enhancer Mix</td><td class="slider"></td></tr>
+        <tr><td>Chorus Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Chorus Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Chorus Depth</td><td class="slider"></td></tr>
+        <tr><td>Chorus Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 63 -->
+    <table class="mfxParameter" id="enhancer_flanger">
+        <tr><td>Enhancer Sens</td><td class="slider"></td></tr>
+        <tr><td>Enhancer Mix</td><td class="slider"></td></tr>
+        <tr><td>Flanger Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Flanger Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Flanger Depth</td><td class="slider"></td></tr>
+        <tr><td>Flanger Feedback</td><td class="slider"></td></tr>
+        <tr><td>Flanger Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 64 -->
+    <table class="mfxParameter" id="enhancer_delay">
+        <tr><td>Enhancer Sens</td><td class="slider"></td></tr>
+        <tr><td>Enhancer Mix</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Delay Feedback</td><td class="slider"></td></tr>
+        <tr><td>Delay HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Delay Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 65 -->
+    <table class="mfxParameter" id="chorus_delay">
+        <tr><td>Chorus Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Chorus Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Chorus Depth</td><td class="slider"></td></tr>
+        <tr><td>Chorus Balance</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Delay Feedback</td><td class="slider"></td></tr>
+        <tr><td>Delay HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Delay Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 66 -->
+    <table class="mfxParameter" id="flanger_delay">
+        <tr><td>Flanger Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Flanger Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Flanger Depth</td><td class="slider"></td></tr>
+        <tr><td>Flanger Feedback</td><td class="slider"></td></tr>
+        <tr><td>Flanger Balance</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Time</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Delay Feedback</td><td class="slider"></td></tr>
+        <tr><td>Delay HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Delay Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+    <!-- mfx 67 -->
+    <table class="mfxParameter" id="chorus_flanger">
+        <tr><td>Chorus Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Chorus Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Chorus Depth</td><td class="slider"></td></tr>
+        <tr><td>Chorus Balance</td><td class="slider"></td></tr>
+        <tr><td>Flanger Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Flanger Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Flanger Depth</td><td class="slider"></td></tr>
+        <tr><td>Flanger Feedback</td><td class="slider"></td></tr>
+        <tr><td>Flanger Balance</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+    </table>
+
+<a name="mfxCtrl">
+<h2>MFX CTRL</h2>
+</a>
+<table class="mfxCtrl">
+    <tr class="selector"><td class="ctrlNum" rowspan="3">1</td><td>Source</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL1_SRC"></td></tr>
+    <tr class="selector"><td>Destination</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL_ASGN1"></td></tr>
+    <tr class="slider"><td>Sens</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL1_SENS"></td></tr>
+</table><br>
+<table class="mfxCtrl">
+    <tr class="selector"><td class="ctrlNum" rowspan="3">2</td><td>Source</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL2_SRC"></td></tr>
+    <tr class="selector"><td>Destination</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL_ASGN2"></td></tr>
+    <tr class="slider"><td>Sens</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL2_SENS"></td></tr>
+</table><br>
+<table class="mfxCtrl">
+    <tr class="selector"><td class="ctrlNum" rowspan="3">3</td><td>Source</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL3_SRC"></td></tr>
+    <tr class="selector"><td>Destination</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL_ASGN3"></td></tr>
+    <tr class="slider"><td>Sens</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL3_SENS"></td></tr>
+</table><br>
+<table class="mfxCtrl">
+    <tr class="selector"><td class="ctrlNum" rowspan="3">4</td><td>Source</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL4_SRC"></td></tr>
+    <tr class="selector"><td>Destination</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL_ASGN4"></td></tr>
+    <tr class="slider"><td>Sens</td><td class="PRM-_FPART1-__currentToneType__MFX_CTRL4_SENS"></td></tr>
+</table>
+<br>
+
+</body>
+</html>

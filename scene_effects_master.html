@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- widget -->
+    <script src="js/view/widget/widget_slider.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_effects_controller.js"></script>
+
+<!-- view -->
+    <script src="js/view/scene_effects_master.js"></script>
+
+
+<style>
+    table {
+        margin-left: 50px;
+        width: 60%;
+    }
+    td.masterEqFreq{
+        background-color:#262626;
+        text-align: center;
+    }
+    span.disableMsg {
+        font-size: 1.2em;
+        margin-left: 100px;
+        display: none;
+    }
+
+</style>
+
+</head>
+<body>
+<a name="top">
+<h1>STUDIO SET</h1>
+</a>
+
+<a name="compEqOut">
+<h2>COMP+EQ OUTPUT</h2>
+</a>
+    <table class="effectsMasterTable">
+        <tr class="selector"><td>Comp+EQ 1 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ1_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+EQ 2 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ2_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+EQ 3 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ3_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+EQ 4 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ4_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+EQ 5 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ5_ASSIGN"></td></tr>
+        <tr class="selector"><td>Comp+EQ 6 Output Assign</td><td class="PRM-_PRF-_FC-NEFC_COMPEQ6_ASSIGN"></td></tr>
+    </table>
+
+<a name="chorus_">
+<h2>CHORUS</h2>
+</a>
+<span class="disableMsg">Chorus is not available because Motional Surround is on.</span>
+<table class="effectsMasterTable" id="chorusTable">
+    <tr class="button"><td>Chorus Switch</td><td class="PRM-_PRF-_FC-NEFC_CHORUS_SW"></td></tr>
+    <tr class="selector"><td>Chorus Type</td><td class="PRM-_PRF-_FH-NEFH_CHO_TYPE"></td></tr>
+    <tr class="slider"><td>Chorus Level</td><td class="PRM-_PRF-_FH-NEFH_CHO_LEVEL"></td></tr>
+    <tr class="selector"><td>Chorus Output Assign</td><td class="PRM-_PRF-_FH-NEFH_CHO_OUT_ASGN"></td></tr>
+    <tr class="selector"><td>Chorus Output Select</td><td class="PRM-_PRF-_FH-NEFH_CHO_OUT_SELECT"></td></tr>
+</table>
+
+    <table class="chorusParameter" id="off"></table>
+    <table class="chorusParameter" id="chorus">
+        <tr><td>Filter Type</td><td class="selector"></td></tr>
+        <tr><td>Cutoff Freq</td><td class="selector"></td></tr>
+        <tr><td>Pre Delay</td><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Rate</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Phase</td><td class="slider"></td></tr>
+        <tr><td>Feedback</td><td class="slider"></td></tr>
+    </table>
+    <table class="chorusParameter" id="delay">
+        <tr class="rate"><td rowspan="3">Delay Left</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Right</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr class="rate"><td rowspan="3">Delay Center</td><td class="selector"></td></tr>
+            <tr><td class="slider"></td></tr>
+            <tr><td class="slider"></td></tr>
+        <tr><td>Center Feedback</td><td class="slider"></td></tr>
+        <tr><td>HF Damp</td><td class="selector"></td></tr>
+        <tr><td>Left Level</td><td class="slider"></td></tr>
+        <tr><td>Right Level</td><td class="slider"></td></tr>
+        <tr><td>Center Level</td><td class="slider"></td></tr>
+    </table>
+    <table class="chorusParameter" id="gm2Chorus">
+        <tr><td>Pre-LPF</td><td class="slider"></td></tr>
+        <tr><td>Level</td><td class="slider"></td></tr>
+        <tr><td>Feedback</td><td class="slider"></td></tr>
+        <tr><td>Delay</td><td class="slider"></td></tr>
+        <tr><td>Rate</td><td class="slider"></td></tr>
+        <tr><td>Depth</td><td class="slider"></td></tr>
+        <tr><td>Send Level to Reverb</td><td class="slider"></td></tr>
+    </table>
+
+<a name="reverb">
+<h2>REVERB</h2>
+</a>
+<span class="disableMsg">Reverb is not available because Motional Surround is on.</span>
+<table class="effectsMasterTable" id="reverbTable">
+    <tr class="button"><td>Reverb Switch</td><td class="PRM-_PRF-_FC-NEFC_REVERB_SW"></td></tr>
+    <tr class="selector"><td>Reverb Type</td><td class="PRM-_PRF-_FV-NEFV_REV_TYPE"></td></tr>
+    <tr class="slider"><td>Reverb Level</td><td class="PRM-_PRF-_FV-NEFV_REV_LEVEL"></td></tr>
+    <tr class="selector"><td>Reverb Output Assign</td><td class="PRM-_PRF-_FV-NEFV_REV_OUT_ASGN"></td></tr>
+</table>
+
+    <table class="reverbParameter" id="off"></table>
+    <table class="reverbParameter" id="other">
+        <tr></tr>
+        <!-- dammy tr -->
+        <tr><td>Pre Delay</td><td class="slider"></td></tr>
+        <tr><td>Time</td><td class="slider"></td></tr>
+        <tr><td>Density</td><td class="slider"></td></tr>
+        <tr><td>Diffusion</td><td class="slider"></td></tr>
+        <tr><td>LF Damp</td><td class="slider"></td></tr>
+        <tr><td>HF Damp</td><td class="slider"></td></tr>
+        <tr><td>Spread</td><td class="slider"></td></tr>
+        <tr><td>Tone</td><td class="slider"></td></tr>
+    </table>
+    <table class="reverbParameter" id="gm2Reverb">
+        <tr><td>Character</td><td class="slider"></td></tr>
+        <tr></tr>
+        <tr></tr>
+        <!-- dammy tr -->
+        <tr><td>Time</td><td class="slider"></td></tr>
+    </table>
+
+<a name="masterEq">
+<h2>MASTER EQ</h2>
+</a>
+<table class="effectsMasterTable">
+   <tr class="button"><td>Master EQ Switch</td><td class="PRM-_PRF-_FC-NEFC_MASTER_EQ_SW"></td></tr>
+</table>
+
+<br>
+<div class="masterEq">
+    <table class="effectsMasterTable">
+        <tr class="selector"><td class="masterEqFreq" rowspan="2">LOW</td><td>CUT OFF</td><td class="PRM-_PRF-_FMEQ-NEFMEQ_EQ_LOWFREQ"></td></tr>
+        <tr class="slider"><td>GAIN</td><td class="PRM-_PRF-_FMEQ-NEFMEQ_EQ_LOWGAIN"></td></tr>
+    </table><br>
+    <table class="effectsMasterTable">
+        <tr class="selector"><td class="masterEqFreq" rowspan="3">MID</td><td>CUT OFF</td><td class="PRM-_PRF-_FMEQ-NEFMEQ_EQ_MIDFREQ" ></td></tr>
+        <tr class="slider"><td>GAIN</td><td class="PRM-_PRF-_FMEQ-NEFMEQ_EQ_MIDGAIN"></td></tr>
+        <tr class="selector"><td>Q</td><td class="PRM-_PRF-_FMEQ-NEFMEQ_EQ_MIDQ"></td></tr>
+    </table><br>
+    <table class="effectsMasterTable">
+        <tr class="selector"><td class="masterEqFreq" rowspan="2">HIGH</td><td>CUT OFF</td><td class="PRM-_PRF-_FMEQ-NEFMEQ_EQ_HIGHFREQ"></td></tr>
+        <tr class="slider"><td>GAIN</td><td class="PRM-_PRF-_FMEQ-NEFMEQ_EQ_HIGHGAIN"></td></tr>
+    </table>
+    <br>
+</div>
+
+</body>
+</html>

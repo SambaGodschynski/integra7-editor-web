@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- widget -->
+    <script src="js/view/widget/widget_slider.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_tone_sns_controller.js"></script>
+
+<!-- view -->
+    <script src="js/view/scene_tone_sns.js"></script>
+
+	<style>
+    table{
+        margin-left: 50px;
+        width: 60%;
+    }
+    table.partial{
+        margin-right: 15px;
+        width: 85%;
+    }
+    h2 {
+        margin-bottom: 8px;
+        margin-bottom: 5px;
+    }
+    tr.module td{
+        text-align: center;
+        background-color: #262626;
+    }
+    table.notPartial {
+        margin-right:15px;
+        width: 85%;
+    }
+
+</style>
+
+</head>
+<body>
+
+
+<a name="common">
+<h2>COMMON</h2>
+</a>
+<table class="toneSnsTable">
+
+    <tr class="selector"><td>Tone Category</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_CATE"></td></tr>
+    <tr class="selector"><td>Phrase Number</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_PHRASE"></td></tr>
+    <tr class="slider"><td>Phrase Octave Shift</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_PHRASE_OCT"></td></tr>
+    <tr class="slider"><td>Tone Level</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_LEVEL"></td></tr>
+    <tr class="button"><td>Ring Switch</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_SYNC_RING_SEL"></td></tr>
+    <tr class="slider"><td>Wave Shape</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_CROSS_MOD"></td></tr>
+    <tr class="slider"><td>Analog Feel</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_ANALOG_FEEL"></td></tr>
+    <tr class="button"><td>Unison Switch</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_UNISON"></td></tr>
+    <tr class="selector"><td>Unison Size</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_UNISON_SIZE"></td></tr>
+    <tr class="selector"><td>Mono/Poly</td><td class='PRM-_FPART1-_SHPAT-_SHPC-SHPC_MONO_SW'></td></tr>
+    <tr class="button"><td>Legato Switch</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_LEGATO_SW"></td></tr>
+    <tr class="button"><td>Portamento Switch</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_PORT_SW"></td></tr>
+    <tr class="slider"><td>Portamento Time</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_PORT_TIME"></td></tr>
+    <tr class="selector"><td>Portamento Mode</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_PORT_MODE"></td></tr>
+
+</table>
+<br>
+
+<a name="osc"><h2>OSC</h2></a>
+<table class="partial" id="osc">
+    <tr class="module"><td></td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_OSC_WAVE">Wave</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_OSC_WAVE_VAR">Wave Variation</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_WAV_NUML">Wave Number</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_WAV_GAIN">Wave Gain</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_OSC_PWM">Pulse Width Mod Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_OSC_PW">Pulse Width</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_OSC_PW_SHIFT">Pulse Width Shift</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_SSAW_DETUNE">Super Saw Detune</td></tr>
+</table>
+
+<a name="pitch"><h2>PITCH</h2></a>
+<table class="partial" id="pitch">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_OSC_PIT_CRS">Osc Pitch</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_OSC_PIT_DETUNE">Osc Detune</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_OSC_PENV_ATK">Pitch Env Attack Time</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_OSC_PENV_DCY">Pitch Env Decay Time</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_OSC_PENV_DEPTH">Pitch Env Depth</td></tr>
+</table>
+<table class="toneSnsTable">
+    <tr class="slider"><td>Octave Shift</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_OCTAVE"></td></tr>
+    <tr class="slider"><td>Pitch Bend Range Up</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_BEND_RANGE_UP"></td></tr>
+    <tr class="slider"><td>Pitch Bend Range Down</td><td class="PRM-_FPART1-_SHPAT-_SHPC-SHPC_BEND_RANGE_DW"></td></tr>
+</table>
+
+<a name="filter"><h2>FILTER</h2></a>
+<table class="partial" id="filter">
+    <tr class="module"><td></td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_MODE">FILTER Mode</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_SLOPE">FILTER Slope</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_FREQ">FILTER Cutoff</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_FREQ_KF">FILTER Cutoff KF</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_ENV_VSENS">FILTER Env V-sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_RESO">FILTER Resonance</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_ENV_ATK">FILTER Env Attack</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_ENV_DCY">FILTER Env Decay</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_ENV_SUS">FILTER Env Sustain</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_ENV_REL">FILTER Env Release</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_FILT_ENV_DEPTH">FILTER Env Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_HPF_CUTOFF">HPF Cutoff</td></tr>
+</table>
+
+<a name="amp"><h2>AMP</h2></a>
+<table class="partial" id="amp">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_AMP_LEVEL">AMP Level</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_AMP_LEVEL_VSENS">AMP Level V-Sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_AMP_PAN">AMP Pan</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_BIAS_LEVEL">AMP Level Keyfollow</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_AMP_ENV_ATK">AMP Env Attack</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_AMP_ENV_DCY">AMP Env Decay</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_AMP_ENV_SUS">AMP Env Sustain</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_AMP_ENV_REL">AMP Env Release</td></tr>
+</table>
+
+<a name="lfo"><h2>LFO</h2></a>
+<table class="partial" id="lfo">
+    <tr class="module"><td></td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_LFO_SHAPE">LFO Shape</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_LFO_RATE">LFO Rate</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_LFO_SYNC_SW">LFO Tempo Sync Sw</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_LFO_SYNC_NOTE">LFO Tempo Sync Note</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_LFO_FADE">LFO Fade Time</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_LFO_KEY_TRIG">LFO Key Trigger</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_LFO_PITCH_MOD">LFO Pitch Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_LFO_FILTER_MOD">LFO Filter Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_LFO_AMP_MOD">LFO Amp Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_LFO_PAN_MOD">LFO Pan Depth</td></tr>
+</table>
+
+<a name="modLfo"><h2>MOD LFO</h2></a>
+<table class="partial" id="modLfo">
+    <tr class="module"><td></td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_MLFO_SHAPE">ModLFO Shape</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_MLFO_RATE">ModLFO Rate</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_MLFO_SYNC_SW">ModLFO TempoSyncSw</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_MLFO_SYNC_NOTE">ModLFO TempoSyncNote</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_MLFO_PITCH_MOD">ModLFO Pitch Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_MLFO_FILTER_MOD">ModLFO Filter Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_MLFO_AMP_MOD">ModLFO Amp Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_MLFO_PAN_MOD">ModLFO Pan Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_MLFO_RATE_MOD">ModLFO Rate Control</td></tr>
+</table>
+
+<a name="afterTouch"><h2>AFTER TOUCH</h2></a>
+<table class="partial" id="afterTouch">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_AFT_CUTOFF_SENS">Cutoff Aftertouch Sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_SHPAT-_SHPT_partial_-SHPT_AFT_LEVEL_SENS">Level Aftertouch Sens</td></tr>
+</table>
+
+<a name="misc"><h2>MISC</h2></a>
+
+<table class="toneSnsTable" id="misc">
+    <tr class="slider"><td>Attack Time Interval Sens</td><td class="PRM-_FPART1-_SHPAT-_SHPTM-SHPTM_MOD_PRM1"></td></tr>
+    <tr class="slider"><td>Release Time Interval Sens</td><td class="PRM-_FPART1-_SHPAT-_SHPTM-SHPTM_MOD_PRM2"></td></tr>
+    <tr class="slider"><td>Portamento Time Interval Sens</td><td class="PRM-_FPART1-_SHPAT-_SHPTM-SHPTM_MOD_PRM3"></td></tr>
+    <tr class="selector"><td>Envelope Loop Mode</td><td class="PRM-_FPART1-_SHPAT-_SHPTM-SHPTM_MOD_PRM4"></td></tr>
+    <tr class="selector"><td>Envelope Loop Sync Note</td><td class="PRM-_FPART1-_SHPAT-_SHPTM-SHPTM_MOD_PRM5"></td></tr>
+    <tr class="button"><td>Chromatic Portamento</td><td class="PRM-_FPART1-_SHPAT-_SHPTM-SHPTM_MOD_PRM6"></td></tr>
+</table>
+<br>
+
+</body>
+</html>

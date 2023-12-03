@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, height=device-height, user-scale=yes, initial-scale=1.0" />
+
+    <link href="css/custom-theme/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/contents.css" rel="stylesheet">
+
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/json2.js"></script>
+
+<!-- widget -->
+    <script src="js/view/widget/widget_slider.js"></script>
+
+<!-- controller -->
+    <script src="js/view/scene_tone_pcms_controller.js"></script>
+
+<!-- view -->
+    <script src="js/view/scene_tone_pcms.js"></script>
+
+	<style>
+    table {
+        margin-left: 50px;
+        width: 60%;
+    }
+    table.partial {
+        margin-right: 15px;
+        width: 85%;
+    }
+    table tr {
+        height: 30px;
+    }
+    h2 {
+        margin-bottom: 8px;
+        margin-bottom: 5px;
+    }
+    tr.module td{
+        text-align: center;
+        background-color: #262626;
+    }
+
+</style>
+</head>
+<body>
+
+<a class="title" id="common" name="common"><h2>COMMON</h2></a>
+<table class="tonePcmsTable" id="common">
+    <tr class="selector"><td>Tone Category</td><td class="PRM-_FPART1-_PAT-_PC2-RFPC2_CATE"></td></tr>
+    <tr class="selector"><td>Phrase Number</td><td class="PRM-_FPART1-_PAT-_PC2-RFPC2_PHRASE"></td></tr>
+    <tr class="slider"><td>Phrase Octave Shift</td><td class="PRM-_FPART1-_PAT-_PC2-RFPC2_PHRASE_OCT"></td></tr>
+    <tr class="slider"><td>Tone Level</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_LEVEL"></td></tr>
+    <tr class="slider"><td>Tone Pan</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_PAN"></td></tr>
+    <tr class="selector"><td>Tone Priority</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_PRIORITY"></td></tr>
+    <tr class="slider"><td>Octave Shift</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_OCTAVE"></td></tr>
+    <tr class="slider"><td>Tone Coarse Tune</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_PIT_CRS"></td></tr>
+    <tr class="slider"><td>Tone Fine Tune</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_PIT_FINE"></td></tr>
+    <tr class="selector"><td>Stretch Tune Depth</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_STRETCH"></td></tr>
+    <tr class="slider"><td>Analog Feel</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_ANALOG_FEEL"></td></tr>
+    <tr class="slider"><td>Cutoff Offset</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CUTOFF_OFST"></td></tr>
+    <tr class="slider"><td>Resonance Offset</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_RESO_OFST"></td></tr>
+    <tr class="slider"><td>Attack Time Offset</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_ATK_OFST"></td></tr>
+    <tr class="slider"><td>Release Time Offset</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_REL_OFST"></td></tr>
+    <tr class="slider"><td>Velocity Sens Offset</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_VSENS_OFST"></td></tr>
+    <tr class="selector"><td>Mono/Poly</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_MONO_POLY"></td></tr>
+    <tr class="button"><td>Legato Switch</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_LEGATO_SW"></td></tr>
+    <tr class="button"><td>Legato Retrigger</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_LEGATO_RETRIG"></td></tr>
+    <tr class="button"><td>Portamento Switch</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_PORT_SW"></td></tr>
+    <tr class="selector"><td>Portamento Mode</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_PORT_MODE"></td></tr>
+    <tr class="selector"><td>Portamento Type</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_PORT_TYPE"></td></tr>
+    <tr class="selector"><td>Portamento Start</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_PORT_START"></td></tr>
+    <tr class="slider"><td>Portamento Time</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_PORT_TIME"></td></tr>
+</table>
+
+
+<a class="title" id="wave" name="wave"><h2>WAVE</h2></a>
+<table class="partial" id="wave">
+    <tr class="module"><td></td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_WAV_GID">Wave Group</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_WAV_NUML">Wave No.L(Mono)</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_WAV_NUMR">Wave No.R</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_WAV_GAIN">Wave Gain</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_TEMPO_SYNC">Wave Tempo Sync</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FXM_SW">FXM Switch</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FXM_COLOR">FXM Color</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FXM_DEPTH">FXM Depth</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_DELAY_MODE">Partial Delay Mode</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_DELAY_TIME">Partial Delay Time</td></tr>
+</table>
+
+
+<a class="title" id="pmt" name="pmt"><h2>PMT</h2></a>
+<table class="tonePcmsTable" id="pmt_2">
+    <tr class="selector"><td>Structure Type 1 &amp; 2</td><td class="PRM-_FPART1-_PAT-_PX-RFPX_STRUCT1"></td></tr>
+    <tr class="selector"><td>Structure Type 3 &amp; 4</td><td class="PRM-_FPART1-_PAT-_PX-RFPX_STRUCT3"></td></tr>
+    <tr class="selector"><td>Booster 1 &amp; 2</td><td class="PRM-_FPART1-_PAT-_PX-RFPX_BOOST1"></td></tr>
+    <tr class="selector"><td>Booster 3 &amp; 4</td><td class="PRM-_FPART1-_PAT-_PX-RFPX_BOOST3"></td></tr>
+    <tr class="selector"><td>PMT Velocity Control</td><td class="PRM-_FPART1-_PAT-_PX-RFPX_TMT_VELO_CTRL"></td></tr>
+    <tr class="button"><td>PMT Control Switch</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_TMT_CTRL_SW"></td></tr>
+</table>
+<table class="partial" id="pmt">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PX-RFPX_TMT_partial__KFADE_UP">Key Fade Upper</td></tr>
+    <tr class="sliderDouble"><td id="PRM-_FPART1-_PAT-_PX-RFPX_TMT_partial__KRANGE_LO">Key Range Lower / Upper</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PX-RFPX_TMT_partial__KFADE_LO">Key Fade Lower</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PX-RFPX_TMT_partial__VFADE_UP">Velo Fade Upper</td></tr>
+    <tr class="sliderDouble"><td id="PRM-_FPART1-_PAT-_PX-RFPX_TMT_partial__VRANGE_LO">Velo Range Lower / Upper</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PX-RFPX_TMT_partial__VFADE_LO">Velo Fade Lower</td></tr>
+</table>
+
+
+<a class="title" id="pitch" name="pitch"><h2>PITCH</h2></a>
+<table class="partial" id="pitch">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PIT_CRS">Partial Coarse Tune</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PIT_FINE">Partial Fine Tune</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PIT_RND">Random Pitch Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PIT_KF">Pitch Keyfollow</td></tr>
+</table>
+<table class="tonePcmsTable" id="pitch_2">
+    <tr class="slider"><td>Pitch Bend Range Up</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_BEND_RANGE_UP"></td></tr>
+    <tr class="slider"><td>Pitch Bend Range Down</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_BEND_RANGE_DW"></td></tr>
+</table>
+
+
+<a  class="title" id="pitchEnv" name="pitchEnv"><h2>PITCH ENV</h2></a>
+<table class="partial" id="pitchEnv">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_DEPTH">Pitch Env Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_VSENS">Pitch Env V-Sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_T1_VSENS">Pitch Env T1 V-sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_T4_VSENS">Pitch Env T4 V-sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_L0">Pitch Env Level 0</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_T1">Pitch Env Time 1</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_L1">Pitch Env Level 1</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_T2">Pitch Env Time 2</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_L2">Pitch Env Level 2</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_T3">Pitch Env Time 3</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_L3">Pitch Env Level 3</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_T4">Pitch Env Time 4</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_L4">Pitch Env Level 4</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PENV_TKF">Pitch Env Time KF</td></tr>
+</table>
+
+
+<a  class="title" id="tvf" name="tvf"><h2>TVF</h2></a>
+<table class="partial" id="tvf">
+    <tr class="module"><td></td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FILTER_TYPE">Filter Type</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CUTOFF">Cutoff Frequency</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_RESO">Resonance</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CUTOFF_VCRV">Cutoff V-Curve</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CUTOFF_VSENS">Cutoff V-Sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CUTOFF_KF">Cutoff Keyfollow</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_RESO_VSENS">Resonance V-Sens</td></tr>
+</table>
+
+
+<a  class="title" id="tvfEnv" name="tvfEnv"><h2>TVF ENV</h2></a>
+<table class="partial" id="tvfEnv">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_DEPTH">TVF Env Depth</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_VCRV">TVF Env V-Curve</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_VSENS">TVF V-Sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_T1_VSENS">TVF Env T1 V-Sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_T4_VSENS">TVF Env T4 V-Sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_TKF">TVF Env Time KF</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_L0">TVF Env Level 0</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_T1">TVF Env Time 1</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_L1">TVF Env Level 1</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_T2">TVF Env Time 2</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_L2">TVF Env Level 2</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_T3">TVF Env Time 3</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_L3">TVF Env Level 3</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_T4">TVF Env Time 4</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_FENV_L4">TVF Env Level 4</td></tr>
+</table>
+
+
+<a  class="title" id="tva" name="tva"><h2>TVA</h2></a>
+<table class="partial" id="tva">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LEVEL">Partial Level</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LEVEL_VCRV">Level V-Curve</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LEVEL_VSENS">Level V-Sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_BIAS_LEVEL">Bias Level</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_BIAS_POS">Bias Position</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_BIAS_DIR">Bias Direction</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PAN">Partial Pan</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PAN_KF">Pan Keyfollow</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PAN_RND">Random Pan Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_PAN_ALT">Alternate Pan Depth</td></tr>
+</table>
+
+
+<a  class="title" id="tvaEnv" name="tvaEnv"><h2>TVA ENV</h2></a>
+<table class="partial" id="tvaEnv">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_AENV_T1_VSENS">TVA Env T1 V-Sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_AENV_T4_VSENS">TVA Env T4 V-Sens</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_AENV_TKF">TVA Env Time KF</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_AENV_T1">TVA Env Time 1</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_AENV_T2">TVA Env Time 2</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_AENV_T3">TVA Env Time 3</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_AENV_T4">TVA Env Time 4</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_AENV_L1">TVA Env Level 1</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_AENV_L2">TVA Env Level 2</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_AENV_L3">TVA Env Level 3</td></tr>
+</table>
+
+
+<a  class="title" id="output" name="output"><h2>OUTPUT</h2></a>
+<table class="partial" id="output">
+    <tr class="module"><td></td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_DRY_SEND">Output Level</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CHO_SEND_A">Chorus Send Level</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_REV_SEND_A">Reverb Send Level</td></tr>
+</table>
+
+
+<a  class="title" id="lfo1" name="lfo1"><h2>LFO 1</h2></a>
+<table class="partial" id="lfo1">
+    <tr class="module"><td></td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_FORM">Waveform</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_RATE">Rate</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_RATE_DETN">Rate Detune</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_OFST">Offset</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_DELAY">Delay Time</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_DELAY_KF">Delay Time KF</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_FADE_MODE">Fade Mode</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_FADE">Fade Time</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_KEY_TRIG">Key Trigger</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_PIT_DEPTH">Pitch Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_TVF_DEPTH">TVF Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_TVA_DEPTH">TVA Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO1_PAN_DEPTH">Pan Depth</td></tr>
+</table>
+
+
+<a  class="title" id="lfo2" name="lfo2"><h2>LFO 2</h2></a>
+<table class="partial" id="lfo2">
+    <tr class="module"><td></td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_FORM">Waveform</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_RATE">Rate</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_RATE_DETN">Rate Detune</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_OFST">Offset</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_DELAY">Delay Time</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_DELAY_KF">Delay Time KF</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_FADE_MODE">Fade Mode</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_FADE">Fade Time</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_KEY_TRIG">Key Trigger</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_PIT_DEPTH">Pitch Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_TVF_DEPTH">TVF Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_TVA_DEPTH">TVA Depth</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO2_PAN_DEPTH">Pan Depth</td></tr>
+</table>
+
+
+<a  class="title" id="stepLfo" name="stepLfo"><h2>STEP LFO</h2></a>
+<table class="partial" id="stepLfo">
+    <tr class="module"><td></td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP_TYPE">Step Type</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP1">LFO Step 1</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP2">LFO Step 2</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP3">LFO Step 3</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP4">LFO Step 4</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP5">LFO Step 5</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP6">LFO Step 6</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP7">LFO Step 7</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP8">LFO Step 8</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP9">LFO Step 9</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP10">LFO Step 10</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP11">LFO Step 11</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP12">LFO Step 12</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP13">LFO Step 13</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP14">LFO Step 14</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP15">LFO Step 15</td></tr>
+    <tr class="slider"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_LFO_STEP16">LFO Step 16</td></tr>
+</table>
+
+
+<a  class="title" id="ctrl" name="ctrl"><h2>CTRL</h2></a>
+<table class="partial" id="ctrl">
+    <tr class="module"><td></td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_ENV_MODE">Env Mode</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_RX_BEND">Rx Bender</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_RX_EXPR">Rx Expression</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_RX_HOLD">Rx Hold-1</td></tr>
+    <tr class="button"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_REDAMP_SW">Redamper Sw</td></tr>
+</table>
+
+
+<a  class="title" id="mtrxCtrl1" name="mtrxCtrl1"><h2>MTRX CTRL 1</h2></a>
+<table class="tonePcmsTable" id="mtrxCtrl1_2">
+    <tr class="selector"><td>Source</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL1_SRC"></td></tr>
+    <tr class="selector"><td>Dest 1</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL1_DST1"></td></tr>
+    <tr class="slider"><td>Sens 1</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL1_SENS1"></td></tr>
+    <tr class="selector"><td>Dest 2</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL1_DST2"></td></tr>
+    <tr class="slider"><td>Sens 2</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL1_SENS2"></td></tr>
+    <tr class="selector"><td>Dest 3</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL1_DST3"></td></tr>
+    <tr class="slider"><td>Sens 3</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL1_SENS3"></td></tr>
+    <tr class="selector"><td>Dest 4</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL1_DST4"></td></tr>
+    <tr class="slider"><td>Sens 4</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL1_SENS4"></td></tr>
+</table>
+<table class="partial" id="mtrxCtrl1">
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL1_SW1">Switch 1</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL1_SW2">Switch 2</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL1_SW3">Switch 3</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL1_SW4">Switch 4</td></tr>
+</table>
+
+
+<a  class="title" id="mtrxCtrl2" name="mtrxCtrl2"><h2>MTRX CTRL 2</h2></a>
+<table class="tonePcmsTable" id="mtrxCtrl2_2">
+    <tr class="selector"><td>Source</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL2_SRC"></td></tr>
+    <tr class="selector"><td>Dest 1</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL2_DST1"></td></tr>
+    <tr class="slider"><td>Sens 1</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL2_SENS1"></td></tr>
+    <tr class="selector"><td>Dest 2</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL2_DST2"></td></tr>
+    <tr class="slider"><td>Sens 2</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL2_SENS2"></td></tr>
+    <tr class="selector"><td>Dest 3</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL2_DST3"></td></tr>
+    <tr class="slider"><td>Sens 3</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL2_SENS3"></td></tr>
+    <tr class="selector"><td>Dest 4</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL2_DST4"></td></tr>
+    <tr class="slider"><td>Sens 4</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL2_SENS4"></td></tr>
+</table>
+<table class="partial" id="mtrxCtrl2">
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL2_SW1">Switch 1</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL2_SW2">Switch 2</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL2_SW3">Switch 3</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL2_SW4">Switch 4</td></tr>
+</table>
+
+
+<a  class="title" id="mtrxCtrl3" name="mtrxCtrl3"><h2>MTRX CTRL 3</h2></a>
+<table class="tonePcmsTable" id="mtrxCtrl3_2">
+    <tr class="selector"><td>Source</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL3_SRC"></td></tr>
+    <tr class="selector"><td>Dest 1</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL3_DST1"></td></tr>
+    <tr class="slider"><td>Sens 1</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL3_SENS1"></td></tr>
+    <tr class="selector"><td>Dest 2</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL3_DST2"></td></tr>
+    <tr class="slider"><td>Sens 2</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL3_SENS2"></td></tr>
+    <tr class="selector"><td>Dest 3</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL3_DST3"></td></tr>
+    <tr class="slider"><td>Sens 3</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL3_SENS3"></td></tr>
+    <tr class="selector"><td>Dest 4</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL3_DST4"></td></tr>
+    <tr class="slider"><td>Sens 4</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL3_SENS4"></td></tr>
+</table>
+<table class="partial" id="mtrxCtrl3">
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL3_SW1">Switch 1</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL3_SW2">Switch 2</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL3_SW3">Switch 3</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL3_SW4">Switch 4</td></tr>
+</table>
+
+
+<a  class="title" id="mtrxCtrl4" name="mtrxCtrl4"><h2>MTRX CTRL 4</h2></a>
+<table class="tonePcmsTable" id="mtrxCtrl4_2">
+    <tr class="selector"><td>Source</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL4_SRC"></td></tr>
+    <tr class="selector"><td>Dest 1</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL4_DST1"></td></tr>
+    <tr class="slider"><td>Sens 1</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL4_SENS1"></td></tr>
+    <tr class="selector"><td>Dest 2</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL4_DST2"></td></tr>
+    <tr class="slider"><td>Sens 2</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL4_SENS2"></td></tr>
+    <tr class="selector"><td>Dest 3</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL4_DST3"></td></tr>
+    <tr class="slider"><td>Sens 3</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL4_SENS3"></td></tr>
+    <tr class="selector"><td>Dest 4</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL4_DST4"></td></tr>
+    <tr class="slider"><td>Sens 4</td><td class="PRM-_FPART1-_PAT-_PC-RFPC_CTRL4_SENS4"></td></tr>
+</table>
+<table class="partial" id="mtrxCtrl4">
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL4_SW1">Switch 1</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL4_SW2">Switch 2</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL4_SW3">Switch 3</td></tr>
+    <tr class="selector"><td id="PRM-_FPART1-_PAT-_PT_partial_-RFPT_CTRL4_SW4">Switch 4</td></tr>
+</table>
+
+
+<script>
+    $('table:not(#common)').css('display', 'none');
+    $('a:not(#common)').css('display', 'none');
+</script>
+
+</body>
+</html>

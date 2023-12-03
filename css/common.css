@@ -1,0 +1,54 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,
+pre,code,form,fieldset,legend,input,textarea,p,span,blockquote,th,td,select,option{
+    font-family: "Myriad Pro", "Helvetica", "Arial",  "Verdana", "sans-serif" !important;
+}
+html, body {
+    font-family: "Myriad Pro", "Helvetica", "Arial",  "Verdana", "sans-serif";
+    font-size: 90%;
+    background-color: #333333;
+    /*scrollbar for IE*/
+    scrollbar-face-color: #333333;
+    scrollbar-arrow-color: #B32334;
+    scrollbar-track-color: #858585;
+}
+select, input {
+    font-size: 13px;
+    padding: 1px;
+    background-color: #888888;
+    border: 1px #333333;
+    margin-left: 0;
+}
+option {
+    margin-bottom: 0.2em;
+    margin-top: 0.2em;
+}
+
+/* Disable selection of text content.
+   .disableSelection() deprecated */
+span {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none; /* IE10~ */
+}
+
+/* Progress Text */
+span#readPrgPer {
+    position: absolute;
+    left: 50%;
+    margin-top: 5px;
+}
+span#syncPrgPer {
+    position: absolute;
+    left: 50%;
+    margin-top: 5px;
+}
+span.confirm {
+    display: block;
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 10px;
+}
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
