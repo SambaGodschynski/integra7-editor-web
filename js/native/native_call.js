@@ -10,8 +10,8 @@ window.native$ = function (func) { /* for Windows ie */
 
 window.native = function (obj, func, ...args) {
 
-	console.log(`window[${obj}][${func}](${args.join(', ')})`);
 	if (!window[obj] || !window[obj][func]) {
+		console.log(`window[${obj}][${func}](${args.join(', ')})`);
 		return `{}`;
 	}
 	return JSON.stringify(window[obj][func](...args) ?? {});
