@@ -38,7 +38,6 @@ window.parent.globals.controller.effects.get = function (id, v) {
 };
 
 window.parent.globals.controller.effects.put = function (id, v) {
-	console.log(id, v);
 	if (id.indexOf("-_PRF-_FPEQ1") !== -1) {
 		part = window.parent.globals.parameter.db.curPart;	
 		var newId = id.replace(/\d+/, part+1);

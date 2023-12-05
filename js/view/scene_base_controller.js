@@ -53,7 +53,6 @@
 		*	param {Number} v
 		*/
 		put: function(id, v) {
-			console.log(id, v);
 			if (!this.checkId(id)) return;
 
 			var addr = eval(id.replace(/-/g, '+'));

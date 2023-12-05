@@ -77,7 +77,6 @@ var
 			t0 = t;
 			var msg = queue.shift();
 			globals.device.send(msg);
-			console.log(msg)
 			wait = parseInt(msg.length / 4);
 		}			
 		updateWatchDog();
@@ -156,8 +155,6 @@ var
 
 		var addrS = s.substring(0, ADDR_SIZE * 2);
 		var dataS = s.substring(ADDR_SIZE * 2);
-
-		globals.log('communicator.js: recv_dt1(): ' + addrS + ', ' + dataS);
 
 		var addr = parseInt(addrS, 16);
 		for (var i = 0, num = transaction.length; i < num; i++) {

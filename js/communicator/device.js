@@ -19,7 +19,6 @@
 
 	var target = [];
 	globals.device.send = function(msg) {
-		console.log('device.js: send(): ' + msg);
 		for (var i = 0, num = target.length; i < num; i++)
 			target[i].send(msg);
 	};

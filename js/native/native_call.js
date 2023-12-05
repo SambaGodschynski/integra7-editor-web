@@ -14,7 +14,14 @@ window.native = function (obj, func, ...args) {
 		console.log(`window[${obj}][${func}](${args.join(', ')})`);
 		return `{}`;
 	}
-	return JSON.stringify(window[obj][func](...args) ?? {});
+	const result = window[obj][func](...args);
+	if (!result) {
+		return undefined;
+	}
+	if (typeof(result) === 'string') {
+		return result;
+	}
+	return JSON.stringify(result);
 };
 
 /* NSURLProtocol for Mac/iOS */
