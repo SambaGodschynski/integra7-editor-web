@@ -70,6 +70,7 @@
 	};
 
 	globals.controller.base_studioset_view.prototype.put = function (id, v) {
+		console.log(id, v);
 		var cnvId = id.replace(/\d+/, 1); // PART* -> PART1
 		switch (cnvId) {
 		case msbId:

@@ -144,7 +144,6 @@
 	};
 
 	globals.model.put = function(addr, v /*, dt1 */) {
-
 		var o = getleaf(root, nibble(addr), 0, ID_PREFIX);
 		if (o == null) {
 			globals.log('model.js: put(): addr(' + addr.toString(16) + ') not found.');

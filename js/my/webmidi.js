@@ -97,7 +97,7 @@ function MyWebMidi() {
     };
     const outputPortSend = async (index, hexStr) => {
         await this.webMidiReadyPromise;
-        console.log(`SENDING: ${hexStr}`);
+        console.log(`    SENDING: ${hexStr}`);
         const outp = this.activeOutputs[index];
         if (!outp) {
             console.warn("NO OUPTPUT FOUND");

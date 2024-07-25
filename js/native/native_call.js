@@ -11,7 +11,7 @@ window.native$ = function (func) { /* for Windows ie */
 window.native = function (obj, func, ...args) {
 
 	if (!window[obj] || !window[obj][func]) {
-		console.log(`window[${obj}][${func}](${args.join(', ')})`);
+		//console.log(`window[${obj}][${func}](${args.join(', ')})`);
 		return `{}`;
 	}
 	const result = window[obj][func](...args);
