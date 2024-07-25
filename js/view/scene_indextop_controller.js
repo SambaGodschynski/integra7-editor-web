@@ -243,11 +243,10 @@
 		part = window.parent.globals.parameter.db.curPart;
 
 		toneDataArray = this.selectToneList(this.editMode);
-
 		var msb = toneDataArray[v][TONE_BANK_M];
 		var lsb = toneDataArray[v][TONE_BANK_L];
 		var pc = toneDataArray[v][TONE_PC];
-
+		window.parent._app_.report("toneChange", `_msb=${msb} _lsb=${lsb} _pc=${pc}`);
 		this.curId = msbId.replace(/\d+/, part+1);
 		baseCtrl.put(msbId.replace(/\d+/, part+1), msb, false);//msb
 		this.curId = lsbId.replace(/\d+/, part+1);

@@ -45,6 +45,7 @@
 
 	globals.controller.base_tone.prototype.put = function(id, v) {
 		console.log(id, v);
+		window.parent._app_.report(id, `${id}: ${v}`);
 		if (id.indexOf("_FPART1-") !== -1) {
 			var addr = eval(id.replace(/-/g, '+'));
 			addr += ((globals.parameter.db.curPart % 4) * partsize + parseInt(globals.parameter.db.curPart / 4)  * partsize * 8);

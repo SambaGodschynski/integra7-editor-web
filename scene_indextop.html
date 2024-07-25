@@ -25,8 +25,21 @@
 </style>
 </head>
 <body>
-
-<div id="tabArea" onMouseDown="return false;">
+<style>
+    #console {
+        position: relative;
+        height: 0;
+    }
+    #console-content {
+        position: absolute;
+        font-family: 'Courier New', Courier, monospace;
+        padding: 5 5px;
+        background: black;
+        color: green;
+        margin-left: 10px;
+    }
+</style>
+<div id="tabArea" onMouseDown="">
     <img id="Rolandlogo" src="./img/Roland.png" alt="logo1">
     <img id="Integralogo" src="./img/INTEGRA-7_gold.png" alt="logo2" >
     <div id="tabset">
@@ -37,7 +50,10 @@
         <input type="radio" name="menu" id="radio7" title="system"><label for="radio7">SYSTEM</label>
         <input type="radio" name="menu" id="radio8" title="exp"><label for="radio8">EXPANSION</label>
     </div>
-
+    <div id="console">
+        <button onclick="window.parent._app_.clearConsole()">Clear</button>
+        <textarea spellcheck="false" id="console-content" rows="5" cols="60"></textarea>
+    </div>
     <div id="tabset2">
         <input type="checkbox" id="preview"><label for="preview" style="margin-right:10px">PREVIEW</label>
         <input type="radio" name="menu" id="radio9" title="utility"><label for="radio9" style="margin-right:10px">UTILITY</label>

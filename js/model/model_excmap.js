@@ -1948,6 +1948,7 @@ model_excmap_bank.prototype.get = function(block, leaf, data, offset) {
 }
 
 model_excmap_bank.prototype.put = function(o, v, data) {
+	console.log("exmap_put")
 	if (v < 0 || v >= this.table.length)
 		return;
 
