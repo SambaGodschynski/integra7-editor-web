@@ -1,0 +1,5 @@
+services:
+  rolandi7:
+    image: rolandi7:latest
+    ports:
+      - "8080:8080"
